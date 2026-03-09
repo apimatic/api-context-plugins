@@ -1,62 +1,100 @@
-# APIMatic Context Plugin Catalog
+# API Context Plugins
 
-This plugin that helps you maintain and integrate third-party APIs using APIMatic's [Context Plugin Catalog](https://www.apimatic.io) MCP server.
+<img src="assets/logo.svg" alt="API Context Plugins" height="60" />
 
-## What it does
+General-purpose AI models are trained on public code and documentation, much of it outdated. They have no awareness of the actual API version, latest SDKs, or recommended workflows.
 
-When you ask your agent to integrate an external API — Paypal, Maxio, Spotify, or others — this plugin guides it through a structured discovery workflow:
-
-1. **Discover** available API SDKs for your project's language via `list_apis`
-2. **Get guidance** on authentication, endpoints, and code samples via `ask`
-3. **Look up** specific SDK models and methods via `model_search` and `endpoint_search`
-
-Your agent never guesses at API capabilities — it always queries the official documentation for up-to-date SDK information and code samples.
+**API Context Plugins** give coding assistants deterministic, version-aware API context — generated directly from your API definition and SDKs. Instead of scraping public documentation or guessing from memory, the AI is grounded in the exact OpenAPI definition, current SDK versions, executable idiomatic code samples, and recommended integration workflows.
 
 ## Requirements
 
-- No API key required — the Context Plugin Catalog MCP server is publicly accessible
+- No API key required — the MCP server is publicly accessible
 
 ## Installation
 
-### Manual MCP setup
+### Claude Code
 
-To use the Context Plugin Catalog MCP server without this plugin, add the following to your MCP config:
+Clone this repository and start Claude Code with the plugin directory. The MCP server and skill are configured automatically:
+
+```bash
+git clone https://github.com/apimatic/api-context-plugins.git
+claude --plugin-dir ./api-context-plugins
+```
+
+Or configure manually:
+
+1. Add the MCP server to your Claude Code MCP config:
 
 ```json
 {
   "mcpServers": {
-    "context-plugin-catalog": {
-      "url": "https://chatbotapi.apimatic.io/mcp/catalog"
+    "api-context-plugins": {
+      "url": "https://chatbotapi.apimatic.io/mcp/plugins"
     }
   }
 }
 ```
 
+2. Copy the skill into your project's `.claude/` directory:
+
+```bash
+cp skills/integrate-api-context-plugins/SKILL.md <your-project>/.claude/
+```
+
+### Cursor
+
+Install from the [Cursor Marketplace](https://cursor.com/marketplace). The MCP server and skill are configured automatically.
+
+Or configure manually:
+
+1. Add the MCP server via **Settings → MCP**:
+
+```json
+{
+  "mcpServers": {
+    "api-context-plugins": {
+      "url": "https://chatbotapi.apimatic.io/mcp/plugins"
+    }
+  }
+}
+```
+
+2. Copy the skill into your project's `.cursor/` directory:
+
+```bash
+cp skills/integrate-api-context-plugins/SKILL.md <your-project>/.cursor/
+```
+
 ## Usage
 
-Once installed, describe what you want to build and the skill activates automatically:
+Once installed, describe what you want to build and the plugin activates automatically:
 
-- _"Integrate Stripe payments into my checkout flow"_
-- _"Add SendGrid email sending to my Node app"_
+- _"Integrate Paypal payments into my checkout flow"_
 - _"Set up Twilio SMS notifications in my Python service"_
 
-You can also invoke the skill directly (exact command may vary by tool or editor):
+## MCP Tools
 
-```
-/apimatic:context-plugin-catalog integrate Stripe payments
-```
+| Tool | Description |
+|---|---|
+| `fetch_api` | Fetch all available APIs with their names and descriptions. Always start here. |
+| `ask` | Ask a question about a specific API to get integration steps and code samples. |
+| `model_search` | Look up an SDK model's definition and properties by name. |
+| `endpoint_search` | Look up an SDK endpoint method's description, parameters, and response by name. |
 
-## Supported languages
+## Supported Languages
 
-`typescript` · `javascript` · `python` · `csharp` · `java` · `go` · `ruby` · `php`
+`typescript` · `python` · `csharp` · `java` · `go` · `ruby` · `php`
 
-The language is inferred automatically from your project's files (e.g. `.csproj` → C#, `package.json` + TypeScript → `typescript`).
+The language is inferred automatically from your project's files (e.g. `.csproj` → `csharp`, `package.json` + TypeScript → `typescript`).
 
-## Plugin contents
+## Plugin Contents
 
 | Path | Purpose |
 |---|---|
-| `.cursor-plugin/plugin.json` | Plugin manifest |
-| `skills/context-plugin-catalog/SKILL.md` | API integration skill |
-| `.mcp.json` | APIMatic MCP server configuration |
+| `.claude-plugin/plugin.json` | Claude Code plugin manifest |
+| `.claude-plugin/mcp.json` | Claude Code MCP configuration |
+| `.cursor-plugin/plugin.json` | Cursor plugin manifest |
+| `.cursor-plugin/mcp.json` | Cursor MCP configuration |
+| `skills/integrate-api-context-plugins/SKILL.md` | API integration skill |
+| `.mcp.json` | MCP configuration (auto-discovery fallback) |
 | `assets/logo.svg` | Plugin logo |

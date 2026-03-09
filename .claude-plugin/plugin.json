@@ -1,0 +1,12 @@
+{
+  "name": "API Context Plugins",
+  "description": "General-purpose AI models are trained on public code and documentation, much of it outdated. They have no awareness of an actual API version, latest SDKs or the recommended workflows. \nAPI Context Plugins give coding assistants deterministic, version-aware API context, generated directly from your API definition and SDKs. Instead of scraping public documentation or guessing from memory, the AI is grounded in the exact OpenAPI definition, current SDK versions, executable, idiomatic code samples, and recommended integration workflows.",
+  "version": "0.1.0",
+  "author": {
+    "name": "APIMatic",
+    "email": "developer@apimatic.io"
+  },
+  "license": "MIT",
+  "homepage": "https://www.apimatic.io",
+  "mcpServers": "./mcp.json"
+}
