@@ -1,100 +1,244 @@
-# API Context Plugins
+# APIMatic Context Plugins
 
-<img src="assets/logo.svg" alt="API Context Plugins" height="60" />
+**SDK-native API context, delivered directly into your AI coding assistant.**
 
-General-purpose AI models are trained on public code and documentation, much of it outdated. They have no awareness of the actual API version, latest SDKs, or recommended workflows.
+[![Product Page](https://img.shields.io/badge/Product-Context%20Plugins-blue)](https://www.apimatic.io/product/context-plugins)
+[![Available for Cursor](https://img.shields.io/badge/IDE-Cursor-orange)](https://www.apimatic.io/product/context-plugins)
+[![Available for Claude Code](https://img.shields.io/badge/IDE-Claude%20Code-purple)](https://www.apimatic.io/product/context-plugins)
 
-**API Context Plugins** give coding assistants deterministic, version-aware API context — generated directly from your API definition and SDKs. Instead of scraping public documentation or guessing from memory, the AI is grounded in the exact OpenAPI definition, current SDK versions, executable idiomatic code samples, and recommended integration workflows.
+---
 
-## Requirements
+## What is a Context Plugin?
 
-- No API key required — the MCP server is publicly accessible
+A Context Plugin is a one-click MCP Server that delivers SDK-generated API context directly into AI-assisted IDEs like Cursor and Claude Code.
 
-## Installation
+When a developer asks their AI assistant to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match your SDK. A Context Plugin solves this by giving the AI assistant *authoritative*, *version-aware*, *SDK-native* context at the exact moment it's needed.
 
-### Claude Code
+No browser tab switching. No hallucinated endpoints. Just correct integration code on the first attempt.
 
-Clone this repository and start Claude Code with the plugin directory. The MCP server and skill are configured automatically:
+---
 
-```bash
-git clone https://github.com/apimatic/api-context-plugins.git
-claude --plugin-dir ./api-context-plugins
-```
+## Try It Now
 
-Or configure manually:
+One-click install into your IDE:
 
-1. Add the MCP server to your Claude Code MCP config:
+| Cursor | Claude Code |
+|--------|-------------|
+| [Install](https://www.apimatic.io/product/context-plugins?ide=cursor) | [Install](https://www.apimatic.io/product/context-plugins?ide=claudeCode) |
 
-```json
-{
-  "mcpServers": {
-    "api-context-plugins": {
-      "url": "https://chatbotapi.apimatic.io/mcp/plugins"
-    }
-  }
-}
-```
+---
 
-2. Copy the skill into your project's `.claude/` directory:
+## Supported APIs
 
-```bash
-cp skills/integrate-api-context-plugins/SKILL.md <your-project>/.claude/
-```
+The plugin gives your AI assistant SDK-native context for the following APIs:
 
-### Cursor
+| API | Description |
+|-----|-------------|
+| **Adyen API** | Payment processing: retrieve payment methods, create orders, manage stored payment tokens |
+| **Google Maps APIs** | Location services: geocoding, directions, distance matrix, elevation, roads, and places |
+| **PayPal Server SDK** | Payment flows: orders, payments, vault, transaction search, and subscriptions |
+| **PayQuicker API** | Payment and financial services: program agreements, bank accounts, spendback quotes |
+| **PostNL Ecommerce APIs** | Postal and logistics: delivery dates, barcodes, shipment status, parcel creation |
+| **Slack API** | Workspace automation: OAuth bots, messaging, conversation management |
+| **Spotify Web API** | Music and podcasts: library management, playback control, discovery |
+| **Tesla Fleet Management API** | Vehicle and fleet operations: charging history, vehicle commands, energy management |
+| **Tesser API Portal** | Digital payments: payment intents, onchain payments, app management |
+| **Twilio API** | Communications: SMS, voice, video, and verification services |
 
-Install from the [Cursor Marketplace](https://cursor.com/marketplace). The MCP server and skill are configured automatically.
-
-Or configure manually:
-
-1. Add the MCP server via **Settings → MCP**:
-
-```json
-{
-  "mcpServers": {
-    "api-context-plugins": {
-      "url": "https://chatbotapi.apimatic.io/mcp/plugins"
-    }
-  }
-}
-```
-
-2. Copy the skill into your project's `.cursor/` directory:
-
-```bash
-cp skills/integrate-api-context-plugins/SKILL.md <your-project>/.cursor/
-```
-
-## Usage
-
-Once installed, describe what you want to build and the plugin activates automatically:
-
-- _"Integrate Paypal payments into my checkout flow"_
-- _"Set up Twilio SMS notifications in my Python service"_
-
-## MCP Tools
-
-| Tool | Description |
-|---|---|
-| `fetch_api` | Fetch all available APIs with their names and descriptions. Always start here. |
-| `ask` | Ask a question about a specific API to get integration steps and code samples. |
-| `model_search` | Look up an SDK model's definition and properties by name. |
-| `endpoint_search` | Look up an SDK endpoint method's description, parameters, and response by name. |
+---
 
 ## Supported Languages
 
-`typescript` · `python` · `csharp` · `java` · `go` · `ruby` · `php`
+Each plugin surfaces SDK-generated context for every major language. Pass the identifier as the `language` parameter in prompts or tool calls:
 
-The language is inferred automatically from your project's files (e.g. `.csproj` → `csharp`, `package.json` + TypeScript → `typescript`).
+| Language | Identifier |
+|----------|-----------|
+| TypeScript | `typescript` |
+| C# | `csharp` |
+| Python | `python` |
+| Java | `java` |
+| Go | `go` |
+| PHP | `php` |
+| Ruby | `ruby` |
 
-## Plugin Contents
+---
 
-| Path | Purpose |
-|---|---|
-| `.claude-plugin/plugin.json` | Claude Code plugin manifest |
-| `.claude-plugin/mcp.json` | Claude Code MCP configuration |
-| `.cursor-plugin/plugin.json` | Cursor plugin manifest |
-| `.cursor-plugin/mcp.json` | Cursor MCP configuration |
-| `skills/integrate-api-context-plugins/SKILL.md` | API integration skill |
-| `.mcp.json` | MCP configuration (auto-discovery fallback) |
-| `assets/logo.svg` | Plugin logo |
+## What the Plugin Gives Your AI Assistant
+
+Once installed, the plugin exposes four tools to your AI coding assistant — each mapped to a specific stage of the integration workflow:
+
+| Tool | Developer task it enables |
+|------|--------------------------|
+| `fetch_api` | **"What APIs can I use?"** — Lists all available APIs with their name, key, and description. Your AI assistant calls this first to discover which APIs are available for your project's language. |
+| `ask` | **"How do I integrate this?"** / **"How does this API work?"** — Chat with API Copilot for step-by-step integration guidance and general API questions: authentication setup, client initialization, feature behavior, framework-specific patterns ("How do I initialize the Twilio client in Laravel?"), and idiomatic SDK code samples. |
+| `model_search` | **"What does this request/response model look like?"** — Returns an SDK model's full definition and its typed properties by name. Call this before writing code that constructs request bodies or reads response objects. |
+| `endpoint_search` | **"What parameters does this endpoint method take?"** — Returns an SDK endpoint method's description, input parameters, and response shape by method name. |
+
+---
+
+## From Prompt to Code: How the Tools Work Together
+
+The four tools are designed to chain together in a natural integration workflow. Here is a concrete example of what happens under the hood when you give your AI assistant a real task:
+
+**Your prompt:** _"Add Twilio SMS notifications to my Next.js app. Send a text when an order ships."_
+
+| Step | Tool called | What it returns |
+|------|-------------|----------------|
+| 1 | `fetch_api` (`language=typescript`) | Discovers Twilio is available; returns its `key` |
+| 2 | `ask` (`key=twilio`, query=_"How do I initialize the Twilio TypeScript client?"_) | Returns exact SDK setup code with auth configuration |
+| 3 | `endpoint_search` (`query=createMessage`) | Returns the method signature, required parameters, and auth requirements for the SMS send endpoint |
+| 4 | `model_search` (`query=CreateMessageRequest`) | Returns the full typed request model with every available field |
+| 5 | `ask` (`query="How do I handle delivery status callbacks in Next.js?"`) | Returns webhook handling code aligned to the Twilio SDK |
+
+Each step completes in a single tool call. Your AI assistant handles the orchestration — you describe the goal, and it picks the right tool at the right time.
+
+---
+
+## Example Prompts to Try
+
+The best way to experience Context Plugins is to paste these prompts directly into Cursor, VS Code, or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
+
+### Getting started with an API
+
+```
+Set up the Spotify TypeScript SDK and fetch my top 5 tracks. Show me the complete client initialization and the API call.
+```
+
+```
+How do I authenticate with the Twilio API and send an SMS? Give me the full PHP setup including the SDK client and the send call.
+```
+
+```
+Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
+```
+
+```
+How do I get a route between two addresses using the Google Maps Directions API in TypeScript?
+```
+
+### Framework-specific integration
+
+```
+I'm building a Next.js app. Integrate the Google Maps Places API to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
+```
+
+```
+I'm using Laravel. Show me how to send a Twilio SMS when a user registers. Include the PHP SDK setup, client initialization, and the controller code.
+```
+
+```
+I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
+```
+
+```
+I'm building a Ruby on Rails app. How do I post a Slack message to a channel when a background job finishes?
+```
+
+```
+I have a Java Spring Boot service. How do I call the Google Maps Geocoding API to convert an address to coordinates?
+```
+
+### Chaining tools for full integrations
+
+These prompts are designed to exercise the full plugin workflow — from API discovery through endpoint lookup to production-ready code.
+
+```
+I want to add real-time order shipping notifications to my Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me the full integration: SDK setup, the correct endpoint and its parameters, and the TypeScript code.
+```
+
+```
+Build a birthday reminder feature in my Laravel app: look up the correct Twilio endpoint for sending SMS, check the request model, then generate the PHP code that sends a personalized birthday message.
+```
+
+```
+I need to post a Slack message every time a Spotify track changes in my playlist monitoring app. Walk me through integrating both APIs in TypeScript — start by discovering what's available, then show me the auth setup and the exact API calls.
+```
+
+```
+In my ASP.NET Core app, I want to geocode user addresses using Google Maps and cache the results. Look up the geocode endpoint and response model, then generate the C# code including error handling.
+```
+
+### Debugging and error handling
+
+```
+My Spotify API call is returning 401. What OAuth flow should I be using and how does the TypeScript SDK handle token refresh automatically?
+```
+
+```
+I'm getting a "21211" error from Twilio when sending SMS. What does this error mean and how do I handle it with the PHP SDK?
+```
+
+```
+What errors should I handle when calling the Google Maps Directions API in Java, and what do the SDK error types look like?
+```
+
+```
+My Slack message posts are failing intermittently with rate limit errors. How does the Python SDK expose rate limit information and what's the recommended retry pattern?
+```
+
+---
+
+## Why Not Just Use LLMs.txt or Documentation?
+
+| Approach | Problem |
+|----------|---------|
+| Developer portal | Developers visit once, then build in their IDE — the gap between the two creates friction |
+| LLMs.txt | Static, machine-readable docs — no SDK-native patterns, no idiomatic code |
+| AI without context | Trained on historical data — confidently generates outdated or incorrect integration code |
+| **Context Plugin** | SDK-generated, version-aware context delivered where developers actually code |
+
+---
+
+## Measured Results
+
+Tested against legacy code migration and new API integration in two production-grade applications:
+
+- **2× faster integration** compared to working from documentation alone
+- **48% lower development cost**
+- **65% reduction in context usage** — the AI gets it done with fewer tokens
+- **~Zero hallucinations** — no fabricated endpoints or non-existent SDK methods
+
+From the internal blog post benchmark: token efficiency increases by 37%, integration success on complex APIs hits 83%, and code quality scores run ~30% higher on average with roughly 70% fewer security issues per thousand lines of code.
+
+→ [Read the full case study](https://www.apimatic.io/product/context-plugins/case-study)
+
+---
+
+## How APIMatic Generates a Context Plugin
+
+APIMatic takes your OpenAPI specification through the same SDK generation pipeline it uses to produce idiomatic, type-safe SDKs in 10+ languages. The resulting MCP server exposes the SDK documentation and integration patterns as structured tool responses that AI assistants can consume natively.
+
+This means the context the AI receives is:
+- Derived from actual generated SDK code, not raw documentation
+- Inclusive of idiomatic patterns, typed models, and error handling
+- Aligned to the current version of your API spec
+
+For API providers: [request a demo](https://www.apimatic.io/request-demo) to generate a Context Plugin for your own API.
+
+---
+
+## Repository Structure
+
+```
+api-context-plugins/
+├── plugins/            # Per-API plugin configurations and manifests
+├── tools/              # MCP tool definitions (fetch, ask, search-endpoint, search)
+├── docs/               # Implementation guides and integration references
+└── examples/           # Sample apps and usage walkthroughs per API
+```
+
+---
+
+## Contributing
+
+Found an issue with a specific plugin or want to request an API? [Open an issue](../../issues) or reach out at [support@apimatic.io](mailto:support@apimatic.io).
+
+---
+
+## Learn More
+
+- [Product page](https://www.apimatic.io/product/context-plugins)
+- [Blog: From API Portals to Cursor](https://www.apimatic.io/blog/from-api-portals-to-cursor)
+- [APIMatic Documentation](https://docs.apimatic.io/)
+
+- [Free Trial](https://www.apimatic.io/free-trial)
