@@ -1,7 +1,9 @@
-name: API Request
+﻿name: API Request
 description: Request a new third-party API to be added to the plugin catalog
-title: "[API Request]: "
+title: "[API Request]: <API name>"
 labels: ["api-request"]
+assignees: []
+projects: []
 body:
   - type: markdown
     attributes:
@@ -12,7 +14,7 @@ body:
     id: api_name
     attributes:
       label: API name
-      description: The name of the API or service you'd like added.
+      description: The name of the API or service you would like added.
       placeholder: e.g., Stripe, SendGrid, GitHub
     validations:
       required: true
@@ -31,8 +33,8 @@ body:
       label: How important is this API to your work?
       options:
         - Nice to have
-        - Important — I'd use this regularly
-        - Blocking — I cannot use the plugin without it
+        - Important - I would use this regularly
+        - Blocking - I cannot use the plugin without it
     validations:
       required: true
 
@@ -40,8 +42,8 @@ body:
     id: use_case
     attributes:
       label: Use case
-      description: Describe what you're building and how you'd use this API with the plugin.
-      placeholder: e.g., I'm integrating Stripe payments into a Laravel app and want the AI assistant to generate correct SDK code without hallucinating endpoint names.
+      description: Describe what you are building and how you would use this API with the plugin.
+      placeholder: e.g., I am integrating Stripe payments into a Laravel app and want the AI assistant to generate correct SDK code without hallucinating endpoint names.
     validations:
       required: true
 
@@ -55,7 +57,7 @@ body:
       required: false
 
   - type: checkboxes
-    id: terms
+    id: checklist
     attributes:
       label: Checklist
       options:

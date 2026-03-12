@@ -1,7 +1,9 @@
-name: Language Request
+﻿name: Language Request
 description: Request support for a new programming language across all available APIs
-title: "[Language Request]: "
+title: "[Language Request]: <language name>"
 labels: ["language-request"]
+assignees: []
+projects: []
 body:
   - type: markdown
     attributes:
@@ -12,7 +14,7 @@ body:
     id: language
     attributes:
       label: Language
-      description: The programming language you'd like supported (e.g., Swift, Kotlin, Rust).
+      description: The programming language you would like supported (e.g., Swift, Kotlin, Rust).
       placeholder: e.g., Swift
     validations:
       required: true
@@ -23,8 +25,8 @@ body:
       label: How important is this language to your work?
       options:
         - Nice to have
-        - Important — I'd use this regularly
-        - Blocking — I cannot use the plugin without it
+        - Important - I would use this regularly
+        - Blocking - I cannot use the plugin without it
     validations:
       required: true
 
@@ -32,8 +34,8 @@ body:
     id: use_case
     attributes:
       label: Use case
-      description: Briefly describe what you'd be building and why this language matters for your API integration work.
-      placeholder: e.g., I'm building an iOS app in Swift and want to integrate the Twilio API using the official SDK.
+      description: Briefly describe what you are building and why this language matters for your API integration work.
+      placeholder: e.g., I am building an iOS app in Swift and want to integrate the Twilio API using the official SDK.
     validations:
       required: true
 
@@ -47,7 +49,7 @@ body:
       required: false
 
   - type: checkboxes
-    id: terms
+    id: checklist
     attributes:
       label: Checklist
       options:
