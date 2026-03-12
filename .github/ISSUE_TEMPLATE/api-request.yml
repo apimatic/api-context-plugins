@@ -1,0 +1,63 @@
+name: API Request
+description: Request a new third-party API to be added to the plugin catalog
+title: "[API Request]: "
+labels: ["api-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request a new API to be added to the API Context Plugins catalog. Once added, your AI assistant will be able to deliver SDK-generated context for that API across all supported languages.
+
+  - type: input
+    id: api_name
+    attributes:
+      label: API name
+      description: The name of the API or service you'd like added.
+      placeholder: e.g., Stripe, SendGrid, GitHub
+    validations:
+      required: true
+
+  - type: input
+    id: api_url
+    attributes:
+      label: API documentation or homepage URL
+      placeholder: e.g., https://stripe.com/docs/api
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this API to your work?
+      options:
+        - Nice to have
+        - Important — I'd use this regularly
+        - Blocking — I cannot use the plugin without it
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: Describe what you're building and how you'd use this API with the plugin.
+      placeholder: e.g., I'm integrating Stripe payments into a Laravel app and want the AI assistant to generate correct SDK code without hallucinating endpoint names.
+    validations:
+      required: true
+
+  - type: input
+    id: openapi_spec
+    attributes:
+      label: OpenAPI specification URL (optional)
+      description: If the API publishes an OpenAPI/Swagger spec, paste the URL here. This helps APIMatic generate the context plugin faster.
+      placeholder: e.g., https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checklist
+      options:
+        - label: I checked the [supported APIs list](../../blob/main/README.md#supported-apis) and this API is not already available.
+          required: true
