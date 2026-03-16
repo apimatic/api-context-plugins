@@ -1,4 +1,4 @@
-# APIMatic Context Plugins
+# APIMatic API Context Plugins
 
 **SDK-native API context, delivered directly into your AI coding agent.**
 
@@ -8,11 +8,11 @@
 
 ---
 
-## What is a Context Plugin?
+## What is an API Context Plugin?
 
-A Context Plugin is a one-click MCP Server that delivers SDK-generated API context directly into AI-assisted IDEs like Cursor and Claude Code.
+An API Context Plugin is a one-click MCP Server that delivers SDK-generated API context directly into AI-assisted IDEs like Cursor and Claude Code.
 
-When a developer asks their agent to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match the actual SDK. A Context Plugin solves this by giving the agent authoritative, version-aware, SDK-native context at the exact moment it's needed.
+When a developer asks their agent to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match the actual SDK. An API Context Plugin solves this by giving the agent authoritative, version-aware, SDK-native context at the exact moment it's needed.
 
 
 ![alt text](image.png)
@@ -81,7 +81,7 @@ Each step completes in a single tool call. The agent handles the orchestration �
 
 ## Example Prompts to Try
 
-The best way to experience Context Plugins is to paste these prompts directly into Cursor or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
+The best way to experience API Context Plugins is to paste these prompts directly into Cursor or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
 
 <details>
 <summary><strong>Getting started with an API</strong></summary>
@@ -185,7 +185,7 @@ Without authoritative SDK context, an agent falls back on two unreliable sources
 |----------|---|---------|
 | LLMs.txt | ❌ | Static docs — no SDK-native patterns, no idiomatic code |
 | AI without context | ❌ | Trained on historical data — may generate outdated or incorrect integration code |
-| **Context Plugin** | ✅ | SDK-generated, version-aware context grounded in the actual SDK |
+| **API Context Plugin** | ✅ | SDK-generated, version-aware context grounded in the actual SDK |
 
 ![Integration without API Context Plugins](image-1.png)
 
@@ -193,9 +193,9 @@ Without authoritative SDK context, an agent falls back on two unreliable sources
 
 ## Measured Results
 
-Four experiments on PayPal API integration and migration tasks across two production-grade .NET applications ([nopCommerce](https://github.com/nopSolutions/nopCommerce) and [eShop](https://github.com/dotnet/eshop)), run on Cursor with GPT-4.1 High. Same task, same IDE, same model — once with agent-only (web search), once with Context Plugins.
+Four experiments on PayPal API integration and migration tasks across two production-grade .NET applications ([nopCommerce](https://github.com/nopSolutions/nopCommerce) and [eShop](https://github.com/dotnet/eshop)), run on Cursor with GPT-4.1 High. Same task, same IDE, same model — once with agent-only (web search), once with API Context Plugins.
 
-| Metric | Agent only | Agent + Context Plugins | Change |
+| Metric | Agent only | Agent + API Context Plugins | Change |
 |--------|-----------|------------------------|--------|
 | Compile / runtime errors | 16 | 1 | ↓ 91% |
 | Prompt iterations | 34 | 16 | ↓ 54% |
@@ -203,7 +203,7 @@ Four experiments on PayPal API integration and migration tasks across two produc
 | Manual fixes | 11 | 0 | ↓ 100% |
 | Hallucinations | Multiple per run | 0 | ↓ ~Zero |
 
-**Token consumption without Context Plugins can skyrocket.** In the most complex experiment (new PayPal checkout integration in eShop), the agent consumed **130.9M tokens** without Context Plugins — compared to **40M with Context Plugins**. The agent spent the bulk of those tokens searching the web, reconciling conflicting results, and correcting its own mistakes.
+**Token consumption without API Context Plugins can skyrocket.** In the most complex experiment (new PayPal checkout integration in eShop), the agent consumed **130.9M tokens** without API Context Plugins — compared to **40M with API Context Plugins**. The agent spent the bulk of those tokens searching the web, reconciling conflicting results, and correcting its own mistakes.
 
 Code quality scores (rated 1–5 across architecture, modularity, design patterns, error handling, and readability) improved from an average of **~3.0 to ~4.8** across all dimensions.
 
@@ -211,7 +211,7 @@ Code quality scores (rated 1–5 across architecture, modularity, design pattern
 
 ---
 
-## How APIMatic Generates a Context Plugin
+## How APIMatic Generates an API Context Plugin
 
 APIMatic takes your OpenAPI specification through the same SDK generation pipeline it uses to produce idiomatic, type-safe SDKs in 10+ languages. The resulting MCP server exposes the SDK documentation and integration patterns as structured tool responses that AI assistants can consume natively.
 
@@ -220,7 +220,7 @@ This means the context the AI receives is:
 - Inclusive of idiomatic patterns, typed models, and error handling
 - Aligned to the current version of your API spec
 
-For API providers: [request a demo](https://www.apimatic.io/request-demo) to generate a Context Plugin for your own API.
+For API providers: [request a demo](https://www.apimatic.io/request-demo) to generate an API Context Plugin for your own API.
 
 ---
 
