@@ -311,7 +311,8 @@ ContextPlugins/
 │   └── ISSUE_TEMPLATE/ # Issue templates for API, language, and feature requests
 ├── assets/             # Logos and static assets
 ├── skills/
-│   └── integrate-api-context-plugins/  # AI agent skill for plugin integration guidance
+│   ├── integrate-api-context-plugins/  # AI agent skill for end-to-end API integration guidance
+│   └── onboard-api-context-plugins/    # AI agent skill for interactive MCP onboarding tour
 ├── CLAUDE.md           # Claude Code agent instructions
 ├── LICENSE.txt
 └── README.md
