@@ -3,8 +3,8 @@
 **SDK-native API context, delivered directly into your AI coding agent.**
 
 [![Product Page](https://img.shields.io/badge/Product-Context%20Plugins-blue)](https://www.apimatic.io/product/context-plugins)
-[![Available for Cursor](https://img.shields.io/badge/IDE-Cursor-orange)](https://www.apimatic.io/product/context-plugins)
-[![Available for Claude Code](https://img.shields.io/badge/IDE-Claude%20Code-purple)](https://www.apimatic.io/product/context-plugins)
+[![Available for Cursor](https://img.shields.io/badge/IDE-Cursor-orange)](https://cursor.com/marketplace)
+[![Available for Claude Code](https://img.shields.io/badge/IDE-Claude%20Code-purple)](https://claude.com/plugins)
 
 ---
 
@@ -25,7 +25,7 @@ One-click install into your IDE:
 
 | Cursor | Claude Code |
 |--------|-------------|
-| [Install](https://www.apimatic.io/product/context-plugins?ide=cursor) | [Install](https://www.apimatic.io/product/context-plugins?ide=claudeCode) |
+| [Install](https://cursor.com/marketplace) | [Install](https://claude.com/plugins) |
 
 ---
 
