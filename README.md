@@ -10,12 +10,12 @@
 
 ## What is an API Context Plugin?
 
+
+![API integration using API Context Plugins](assets/images/image.png)
+
 An API Context Plugin is a one-click MCP Server that delivers SDK-generated API context directly into AI-assisted IDEs like Cursor and Claude Code.
 
 When a developer asks their agent to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match the actual SDK. An API Context Plugin solves this by giving the agent authoritative, version-aware, SDK-native context at the exact moment it's needed.
-
-
-![API integration using API Context Plugins](assets/images/image.png)
 
 ---
 
@@ -150,32 +150,61 @@ My Slack message posts are failing intermittently with rate limit errors. How do
 
 ---
 
-## Bootstrap Applications Using API Context Plugins
+## Build a Full App in Minutes
 
 <details>
-<summary><strong>PayPal Instant Storefront</strong></summary>
+<summary><strong>PayPal Instant Storefront — Node.js/Express · 30 min</strong></summary>
+
+![paypalsampleapp](https://github.com/user-attachments/assets/dc3e5b02-934e-44b5-9df9-20387557babe)
 
 **What was built:** A full Node.js/Express storefront with product management, shareable checkout links per product, PayPal Smart Payment Buttons, server-side order creation and capture, and a payment history dashboard.
 
 **The prompt:**
+```
+Build a PayPal storefront. Product creation form, unique shareable checkout 
+URL per product with Smart Payment Buttons, server-side order creation and 
+capture, and a payment dashboard. Deployable with npm install && npm start.
+```
 
+<details>
+<summary>Full prompt</summary>
 ```
-Build me a "PayPal Instant Storefront" app. The app has a setup page where I enter my PayPal client-id and secret once, then a product creation form where I enter a product name, description, price, currency, and upload or provide product images. When I click "Generate Checkout Page" it creates a live, shareable checkout URL like /checkout/abc123 that anyone can open — they see the product details with images, price, description, and a working PayPal Smart Payment Button. The payment flow should be fully server-side using the PayPal Server SDK: backend creates the order when buyer clicks pay, captures it after approval, and shows a confirmation page with order details. I should be able to create multiple products and each gets its own unique checkout link I can share with anyone. Include a simple dashboard where I can see all my products and their checkout links, plus a list of completed payments showing order ID, buyer info, amount, and status for each product. The checkout pages should be mobile-responsive and look like real professional product pages. Support sandbox and live mode via environment variables. Only use the Orders API and Payments API, do not use Transaction Search or Vault. Make it deployable with npm install and npm start.
+Build me a "PayPal Instant Storefront" app. The app has a setup page where I 
+enter my PayPal client-id and secret once, then a product creation form where 
+I enter a product name, description, price, currency, and upload or provide 
+product images. When I click "Generate Checkout Page" it creates a live, 
+shareable checkout URL like /checkout/abc123 that anyone can open — they see 
+the product details with images, price, description, and a working PayPal 
+Smart Payment Button. The payment flow should be fully server-side using the 
+PayPal Server SDK: backend creates the order when buyer clicks pay, captures 
+it after approval, and shows a confirmation page with order details. I should 
+be able to create multiple products and each gets its own unique checkout link 
+I can share with anyone. Include a simple dashboard where I can see all my 
+products and their checkout links, plus a list of completed payments showing 
+order ID, buyer info, amount, and status for each product. The checkout pages 
+should be mobile-responsive and look like real professional product pages. 
+Support sandbox and live mode via environment variables. Only use the Orders 
+API and Payments API, do not use Transaction Search or Vault. Make it 
+deployable with npm install and npm start.
 ```
+
+</details>
 
 **How the tools were used:**
 
 | Step | Tool | Query | What it returned |
 |------|------|-------|-----------------|
-| 1 | `endpoint_search` | `ordersCreate` | TypeScript method signature and required body structure |
-| 2 | `endpoint_search` | `captureOrder` | Capture contract, payer info extraction, capture ID location in response |
-| 3 | `endpoint_search` | `getOrder` | Order retrieval details for the confirmation page |
-| 4 | `model_search` | `AmountWithBreakdown` | Schema for correctly structuring item amounts and totals |
-| 5 | `model_search` | `PurchaseUnitRequest` | Required fields for order line items |
-| 6 | `ask` | SDK setup & auth | Client init, sandbox vs. live config, credential handling |
-| 7 | `ask` | Smart Payment Buttons | Frontend button integration aligned to the SDK |
-| 8 | `ask` | Deprecation guidance | Flagged `payer` and `application_context` as deprecated |
-| 9 | `ask` | Capture & confirmation | Full create → approve → capture flow with payer info extraction |
+| 1 | `fetch_api` | `language=typescript` | Available APIs; identified PayPal Server SDK with key `paypal` |
+| 2 | `ask` | SDK setup & environment switching | Client initialization code, `.env` structure, sandbox vs. live config via `Client.fromEnvironment` |
+| 3 | `ask` | Order creation flow | End-to-end create → approve → capture flow with full TypeScript server-side code |
+| 4 | `endpoint_search` | `ordersCreate` | `CreateOrder` method signature, `OrderRequest` body structure, response type `Order`, error codes |
+| 5 | `endpoint_search` | `capture` | `CaptureOrder` contract — required `id` param, optional body, capture ID location in response |
+| 6 | `model_search` | `OrderRequest` | Full request model properties; flagged `payer` and `application_context` as deprecated |
+| 7 | `model_search` | `Money` | Currency code and value fields for structuring amounts |
+| 8 | `ask` | Smart Payment Buttons | Frontend button integration — `createOrder` / `onApprove` wiring to backend endpoints |
+| 9 | `endpoint_search` | `getOrder` | `GetOrder` method signature and response shape for the confirmation page |
+| 10 | `model_search` | `PurchaseUnitRequest` | Full model with `amount`, `items`, `shipping`, and all optional fields |
+| 11 | `model_search` | `Order` | Full response model — `status`, `purchaseUnits`, `links` (including the `approve` redirect URL) |
 
 **App outcome:**
 
@@ -190,11 +219,11 @@ Build me a "PayPal Instant Storefront" app. The app has a setup page where I ent
 
 **Build time:** 10 min generation + 20 min testing = **30 minutes total**
 
-![paypalsampleapp](https://github.com/user-attachments/assets/dc3e5b02-934e-44b5-9df9-20387557babe)
-
 </details>
 
 ## Why API Integration Breaks AI Coding Agents
+
+![Integration without API Context Plugins](assets/images/image-1.png)
 
 API integration is not pattern generation — it is contract enforcement. SDKs encode strict models, auth flows, and version-specific behavior. Approximating any of it produces compile failures, runtime bugs, and security gaps.
 
@@ -205,8 +234,6 @@ Without authoritative SDK context, an agent falls back on two unreliable sources
 | LLMs.txt | ❌ | Static docs — no SDK-native patterns, no idiomatic code |
 | AI without context | ❌ | Trained on historical data — may generate outdated or incorrect integration code |
 | **API Context Plugin** | ✅ | SDK-generated, version-aware context grounded in the actual SDK |
-
-![Integration without API Context Plugins](assets/images/image-1.png)
 
 ---
 
