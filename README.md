@@ -8,12 +8,12 @@
 
 ---
 
-## What is an API Context Plugin?
+## What is API Context Plugin?
 
 
 ![API integration using API Context Plugins](assets/images/image.png)
 
-An API Context Plugin is a one-click MCP Server that delivers SDK-generated API context directly into AI-assisted IDEs like Cursor and Claude Code.
+API Context Plugin is a one-click MCP Server that delivers SDK-generated API context directly into AI-assisted IDEs like Cursor and Claude Code.
 
 When a developer asks their agent to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match the actual SDK. An API Context Plugin solves this by giving the agent authoritative, version-aware, SDK-native context at the exact moment it's needed.
 
