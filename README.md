@@ -151,6 +151,66 @@ Make it deployable with npm install and npm start.
 
 </details>
 
+<details>
+<summary><strong>Spotify Music DNA Card — Python/Flask · 30 min</strong></summary>
+
+**What was built:** A Python/Flask web app where users authenticate via Spotify OAuth, fetch their top artists and tracks, retrieve audio features in batch, and analyze the data to produce a personalized "Music DNA" card — featuring a radar chart of average audio features, top 5 genres, most obscure artist, and a generated personality label — with a download/share button. Custom branding only; no Spotify logos.
+
+**The prompt:**
+
+```
+/api-context-plugins Create a web app using Python where users log in with Spotify,
+fetch their top artists and top tracks, then fetch audio features for those tracks.
+Analyze the data to calculate average audio features, find the most obscure artist,
+determine the top 5 genres, and generate a "music personality" label based on the
+averages. Render all of this in a visually appealing DNA card with a radar chart,
+top genres, most obscure artist, and personality label, and include a button to
+download or share the card. Use your own branding and logo; do not include Spotify
+logos anywhere.
+```
+
+**How the tools were used:**
+
+| Step | Tool | Query | What it returned |
+|------|------|-------|-----------------|
+| 1 | `fetch_api` | `language=python` | Available APIs; identified Spotify Web API SDK with key `spotify` |
+| 2 | `ask` | SDK setup, OAuth 2.0 authorization code flow for user login | Full `pip install spotify-api-sdk` setup, `SpotifywebapiClient` initialization with `AuthorizationCodeAuthCredentials`, `.env` structure, `get_authorization_url()` → `fetch_token(code)` → `clone_with(o_auth_token=token)` flow, token refresh pattern |
+| 3 | `ask` | How to fetch a user's top artists and top tracks | End-to-end code using `users_controller.get_users_top_artists()` and `users_controller.get_users_top_tracks()` with `time_range`, `limit`, `offset` params; reading `PagingArtistObject.items` and `PagingTrackObject.items` |
+| 4 | `endpoint_search` | `get_users_top_artists` | Method signature — params `time_range`, `limit`, `offset`; response type `PagingArtistObject`; required scope `OAuthScopeEnum.USER_TOP_READ` |
+| 5 | `endpoint_search` | `get_users_top_tracks` | Method signature — same params as top artists; response type `PagingTrackObject` with `List[TrackObject]` items |
+| 6 | `endpoint_search` | `get_audio_features` | Single-track method via `tracks_controller.get_audio_features(id)`; response type `AudioFeaturesObject` |
+| 7 | `endpoint_search` | `get_several_audio_features` | Batch method via `tracks_controller.get_several_audio_features(ids)` — takes comma-separated track IDs string; response type `ManyAudioFeatures` |
+| 8 | `endpoint_search` | `get_current_users_profile` | `users_controller.get_current_users_profile()` — no params; response `PrivateUserObject`; required scopes `USER_READ_EMAIL`, `USER_READ_PRIVATE` |
+| 9 | `model_search` | `AudioFeaturesObject` | All 14 properties — `danceability`, `energy`, `valence`, `acousticness`, `instrumentalness`, `liveness`, `speechiness`, `tempo`, `loudness`, `key`, `mode`, `time_signature`, `duration_ms`, `uri` (all 0.0–1.0 floats used for radar chart & personality logic) |
+| 10 | `model_search` | `ArtistObject` | Properties `name`, `id`, `popularity` (0–100 int, used to find most obscure artist), `genres` (`List[str]`, used for top-5 genre aggregation), `images`, `external_urls` |
+| 11 | `model_search` | `TrackObject` | Properties `id` (needed for audio features batch call), `name`, `popularity`, `artists` (`List[ArtistObject]`), `album`, `duration_ms`, `uri` |
+| 12 | `model_search` | `PagingTrackObject` | Paging wrapper — `items` (`List[TrackObject]`), `total`, `next`, `offset`, `limit` |
+| 13 | `model_search` | `ManyAudioFeatures` | Batch response wrapper — `audio_features` (`List[AudioFeaturesObject]`) for iterating and averaging |
+| 14 | `model_search` | `PrivateUserObject` | User profile — `display_name`, `images` (`List[ImageObject]`), `id`, `email`, `country` (used to personalize the DNA card header) |
+
+**App outcome:**
+
+- Spotify OAuth 2.0 login via Authorization Code flow (no client secrets exposed to browser)
+- Fetches current user's profile (`display_name`, avatar) to personalize the card
+- Retrieves top 50 artists and top 50 tracks (configurable `time_range`: short/medium/long term)
+- Batch-fetches audio features for all top tracks via `get_several_audio_features`
+- Computes average audio features (danceability, energy, valence, acousticness, instrumentalness, liveness, speechiness) across all tracks
+- Identifies the most obscure artist (lowest `popularity` score among top artists)
+- Aggregates and ranks top 5 genres from all top artists' genre lists
+- Generates a "music personality" label based on average feature thresholds (e.g., "Energetic Explorer", "Melancholic Dreamer", "Chill Acoustic Soul")
+- Renders a visually appealing DNA card with:
+  - Radar chart (Chart.js) of the 7 average audio features
+  - Top 5 genres with visual badges
+  - Most obscure artist with name and popularity score
+  - Personality label prominently displayed
+  - User's display name and avatar
+- Download card as PNG and share button (html2canvas)
+- Custom branding and logo throughout — no Spotify logos anywhere
+- Token refresh handling for long sessions
+- Deployable with `pip install -r requirements.txt && python app.py`
+
+</details>
+
 ---
 
 ## Example Prompts to Try
