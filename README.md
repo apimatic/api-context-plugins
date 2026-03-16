@@ -1,6 +1,6 @@
 # APIMatic Context Plugins
 
-**SDK-native API context, delivered directly into your AI coding assistant.**
+**SDK-native API context, delivered directly into your AI coding agent.**
 
 [![Product Page](https://img.shields.io/badge/Product-Context%20Plugins-blue)](https://www.apimatic.io/product/context-plugins)
 [![Available for Cursor](https://img.shields.io/badge/IDE-Cursor-orange)](https://www.apimatic.io/product/context-plugins)
@@ -12,9 +12,10 @@
 
 A Context Plugin is a one-click MCP Server that delivers SDK-generated API context directly into AI-assisted IDEs like Cursor and Claude Code.
 
-When a developer asks their AI assistant to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match your SDK. A Context Plugin solves this by giving the AI assistant *authoritative*, *version-aware*, *SDK-native* context at the exact moment it's needed.
+When a developer asks their agent to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match the actual SDK. A Context Plugin solves this by giving the agent authoritative, version-aware, SDK-native context at the exact moment it's needed.
 
-No browser tab switching. No hallucinated endpoints. Just correct integration code on the first attempt.
+
+![alt text](image.png)
 
 ---
 
@@ -30,7 +31,7 @@ One-click install into your IDE:
 
 ## Supported APIs
 
-The plugin gives your AI assistant SDK-native context for the following APIs:
+The plugin gives the agent SDK-native context for the following APIs:
 
 | API | Description |
 |-----|-------------|
@@ -63,13 +64,13 @@ Each plugin surfaces SDK-generated context for every major language. Pass the id
 
 ---
 
-## What the Plugin Gives Your AI Assistant
+## What the Plugin Gives the Agent
 
-Once installed, the plugin exposes four tools to your AI coding assistant — each mapped to a specific stage of the integration workflow:
+Once installed, the plugin exposes four tools to the agent — each mapped to a specific stage of the integration workflow:
 
 | Tool | Developer task it enables |
 |------|--------------------------|
-| `fetch_api` | **"What APIs can I use?"** — Lists all available APIs with their name, key, and description. Your AI assistant calls this first to discover which APIs are available for your project's language. |
+| `fetch_api` | **"What APIs can I use?"** — Lists all available APIs with their name, key, and description. The agent calls this first to discover which APIs are available for your project's language. |
 | `ask` | **"How do I integrate this?"** / **"How does this API work?"** — Chat with API Copilot for step-by-step integration guidance and general API questions: authentication setup, client initialization, feature behavior, framework-specific patterns ("How do I initialize the Twilio client in Laravel?"), and idiomatic SDK code samples. |
 | `model_search` | **"What does this request/response model look like?"** — Returns an SDK model's full definition and its typed properties by name. Call this before writing code that constructs request bodies or reads response objects. |
 | `endpoint_search` | **"What parameters does this endpoint method take?"** — Returns an SDK endpoint method's description, input parameters, and response shape by method name. |
@@ -78,7 +79,7 @@ Once installed, the plugin exposes four tools to your AI coding assistant — ea
 
 ## From Prompt to Code: How the Tools Work Together
 
-The four tools are designed to chain together in a natural integration workflow. Here is a concrete example of what happens under the hood when you give your AI assistant a real task:
+The four tools are designed to chain together in a natural integration workflow. Here is a concrete example of what happens under the hood when the agent receives a real task:
 
 **Your prompt:** _"Add Twilio SMS notifications to my Next.js app. Send a text when an order ships."_
 
@@ -90,15 +91,16 @@ The four tools are designed to chain together in a natural integration workflow.
 | 4 | `model_search` (`query=CreateMessageRequest`) | Returns the full typed request model with every available field |
 | 5 | `ask` (`query="How do I handle delivery status callbacks in Next.js?"`) | Returns webhook handling code aligned to the Twilio SDK |
 
-Each step completes in a single tool call. Your AI assistant handles the orchestration — you describe the goal, and it picks the right tool at the right time.
+Each step completes in a single tool call. The agent handles the orchestration — you describe the goal, and it picks the right tool at the right time.
 
 ---
 
 ## Example Prompts to Try
 
-The best way to experience Context Plugins is to paste these prompts directly into Cursor, VS Code, or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
+The best way to experience Context Plugins is to paste these prompts directly into Cursor or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
 
-### Getting started with an API
+<details>
+<summary><strong>Getting started with an API</strong></summary>
 
 ```
 Set up the Spotify TypeScript SDK and fetch my top 5 tracks. Show me the complete client initialization and the API call.
@@ -116,7 +118,10 @@ Walk me through initializing the Slack API client in a Python script and posting
 How do I get a route between two addresses using the Google Maps Directions API in TypeScript?
 ```
 
-### Framework-specific integration
+</details>
+
+<details>
+<summary><strong>Framework-specific integration</strong></summary>
 
 ```
 I'm building a Next.js app. Integrate the Google Maps Places API to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
@@ -138,7 +143,10 @@ I'm building a Ruby on Rails app. How do I post a Slack message to a channel whe
 I have a Java Spring Boot service. How do I call the Google Maps Geocoding API to convert an address to coordinates?
 ```
 
-### Chaining tools for full integrations
+</details>
+
+<details>
+<summary><strong>Chaining tools for full integrations</strong></summary>
 
 These prompts are designed to exercise the full plugin workflow — from API discovery through endpoint lookup to production-ready code.
 
@@ -158,7 +166,10 @@ I need to post a Slack message every time a Spotify track changes in my playlist
 In my ASP.NET Core app, I want to geocode user addresses using Google Maps and cache the results. Look up the geocode endpoint and response model, then generate the C# code including error handling.
 ```
 
-### Debugging and error handling
+</details>
+
+<details>
+<summary><strong>Debugging and error handling</strong></summary>
 
 ```
 My Spotify API call is returning 401. What OAuth flow should I be using and how does the TypeScript SDK handle token refresh automatically?
@@ -176,16 +187,23 @@ What errors should I handle when calling the Google Maps Directions API in Java,
 My Slack message posts are failing intermittently with rate limit errors. How does the Python SDK expose rate limit information and what's the recommended retry pattern?
 ```
 
+</details>
+
 ---
 
-## Why Not Just Use LLMs.txt or Documentation?
+## Why API Integration Breaks AI Coding Agents
 
-| Approach | Problem |
-|----------|---------|
-| Developer portal | Developers visit once, then build in their IDE — the gap between the two creates friction |
-| LLMs.txt | Static, machine-readable docs — no SDK-native patterns, no idiomatic code |
-| AI without context | Trained on historical data — confidently generates outdated or incorrect integration code |
-| **Context Plugin** | SDK-generated, version-aware context delivered where developers actually code |
+API integration is not pattern generation — it is contract enforcement. SDKs encode strict models, auth flows, and version-specific behavior. Approximating any of it produces compile failures, runtime bugs, and security gaps.
+
+Without authoritative SDK context, an agent falls back on two unreliable sources: training data that may not match the SDK version in use, and web search results that are often sanitized — code samples stripped of critical detail or reconstructed from incomplete examples. Neither reflects the actual SDK contract. The result is mixed patterns, misinterpreted auth flows, and speculative code that requires repeated correction.
+
+| Approach | | Problem |
+|----------|---|---------|
+| LLMs.txt | ❌ | Static docs — no SDK-native patterns, no idiomatic code |
+| AI without context | ❌ | Trained on historical data — may generate outdated or incorrect integration code |
+| **Context Plugin** | ✅ | SDK-generated, version-aware context grounded in the actual SDK |
+
+![Integration without API Context Plugins](image-1.png)
 
 ---
 
@@ -220,18 +238,30 @@ For API providers: [request a demo](https://www.apimatic.io/request-demo) to gen
 ## Repository Structure
 
 ```
-api-context-plugins/
-├── plugins/            # Per-API plugin configurations and manifests
-├── tools/              # MCP tool definitions (fetch, ask, search-endpoint, search)
-├── docs/               # Implementation guides and integration references
-└── examples/           # Sample apps and usage walkthroughs per API
+ContextPlugins/
+├── .claude-plugin/     # Claude Code plugin configuration (mcp.json, plugin.json)
+├── .cursor-plugin/     # Cursor plugin configuration (mcp.json, plugin.json)
+├── .github/
+│   └── ISSUE_TEMPLATE/ # Issue templates for API, language, and feature requests
+├── assets/             # Logos and static assets
+├── skills/
+│   └── integrate-api-context-plugins/  # AI agent skill for plugin integration guidance
+├── CLAUDE.md           # Claude Code agent instructions
+├── LICENSE.txt
+└── README.md
 ```
 
 ---
 
 ## Contributing
 
-Found an issue with a specific plugin or want to request an API? [Open an issue](../../issues) or reach out at [support@apimatic.io](mailto:support@apimatic.io).
+Have a request or found an issue? Use one of the templates below:
+
+- [Request a new language](../../issues/new?template=language-request.yml) — ask for support for a new SDK language (e.g., Swift, Kotlin, Rust)
+- [Request a new API](../../issues/new?template=api-request.yml) — ask for a new third-party API to be added to the catalog
+- [Request a tool or feature](../../issues/new?template=feature-request.yml) — suggest a new MCP tool or an improvement to an existing one
+
+For anything else, [open a blank issue](../../issues/new) or reach out at [support@apimatic.io](mailto:support@apimatic.io).
 
 ---
 
@@ -239,6 +269,4 @@ Found an issue with a specific plugin or want to request an API? [Open an issue]
 
 - [Product page](https://www.apimatic.io/product/context-plugins)
 - [Blog: From API Portals to Cursor](https://www.apimatic.io/blog/from-api-portals-to-cursor)
-- [APIMatic Documentation](https://docs.apimatic.io/)
-
-- [Free Trial](https://www.apimatic.io/free-trial)
+- [Case Study](https://www.apimatic.io/product/context-plugins/case-study)
