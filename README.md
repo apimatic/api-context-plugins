@@ -46,6 +46,8 @@ The plugin gives the agent SDK-native context for the following APIs, available 
 | **Tesser API Portal** | Digital payments: payment intents, onchain payments, app management |
 | **Twilio API** | Communications: SMS, voice, video, and verification services |
 
+This list is growing. [Suggest a new API](#contributing) to request support for one not listed here.
+
 ---
 
 ## What the Plugin Gives the Agent
@@ -58,13 +60,16 @@ Once installed, the plugin exposes four tools to the agent. Each tool is mapped 
 | `ask` | Chat with API Copilot for step-by-step integration guidance and general API questions: authentication setup, client initialization, feature behavior, framework-specific patterns (e.g. "How do I initialize the Twilio client in Laravel?"), and idiomatic SDK code samples. |
 | `endpoint_search` | Returns an SDK endpoint method's description, input parameters, and response shape by method name. |
 | `model_search` | Returns an SDK model's full definition and its typed properties by name. Call this before writing code that constructs request bodies or reads response objects. |
+
+For step-by-step guidance on using these tools together, invoke the `/integrate-api-context-plugins` skill in your agent. It tells the agent when and how to call each tool throughout your integration workflow.
+
 ---
 
 ## From Prompt to Code: How the Tools Work Together
 
 The four tools are designed to chain together in a natural integration workflow. Here is a concrete example of what happens under the hood when the agent receives a real task:
 
-**Your prompt:** _"Add Twilio SMS notifications to my Next.js app. Send a text when an order ships."_
+**Your prompt:** _"/integrate-api-context-plugins Add Twilio SMS notifications to my Next.js app. Send a text when an order ships."_
 
 | Step | Tool called | What it returns |
 |------|-------------|----------------|
@@ -78,78 +83,6 @@ Each step completes in a single tool call. The agent handles the orchestration. 
 
 ---
 
-## Example Prompts to Try
-
-The best way to experience API Context Plugins is to paste these prompts directly into Cursor or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
-
-<details>
-<summary><strong>Getting started with an API</strong></summary>
-
-```
-Set up the Spotify TypeScript SDK and fetch my top 5 tracks. Show me the complete client initialization and the API call.
-```
-
-```
-How do I authenticate with the Twilio API and send an SMS? Give me the full PHP setup including the SDK client and the send call.
-```
-
-```
-Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
-```
-
-</details>
-
-<details>
-<summary><strong>Framework-specific integration</strong></summary>
-
-```
-I'm building a Next.js app. Integrate the Google Maps Places API to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
-```
-
-```
-I'm using Laravel. Show me how to send a Twilio SMS when a user registers. Include the PHP SDK setup, client initialization, and the controller code.
-```
-
-```
-I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
-```
-
-</details>
-
-<details>
-<summary><strong>Chaining tools for full integrations</strong></summary>
-
-These prompts are designed to exercise the full plugin workflow; from API discovery through endpoint lookup to production-ready code.
-
-```
-I want to add real-time order shipping notifications to my Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me the full integration: SDK setup, the correct endpoint and its parameters, and the TypeScript code.
-```
-
-```
-I need to post a Slack message every time a Spotify track changes in my playlist monitoring app. Walk me through integrating both APIs in TypeScript — start by discovering what's available, then show me the auth setup and the exact API calls.
-```
-
-```
-In my ASP.NET Core app, I want to geocode user addresses using Google Maps and cache the results. Look up the geocode endpoint and response model, then generate the C# code including error handling.
-```
-
-</details>
-
-<details>
-<summary><strong>Debugging and error handling</strong></summary>
-
-```
-My Spotify API call is returning 401. What OAuth flow should I be using and how does the TypeScript SDK handle token refresh automatically?
-```
-
-```
-My Slack message posts are failing intermittently with rate limit errors. How does the Python SDK expose rate limit information and what's the recommended retry pattern?
-```
-
-</details>
-
----
-
 ## Build a Full App in Minutes
 
 <details>
@@ -160,36 +93,25 @@ My Slack message posts are failing intermittently with rate limit errors. How do
 **What was built:** A full Node.js/Express storefront with product management, shareable checkout links per product, PayPal Smart Payment Buttons, server-side order creation and capture, and a payment history dashboard.
 
 **The prompt:**
-```
-Build a PayPal storefront. Product creation form, unique shareable checkout 
-URL per product with Smart Payment Buttons, server-side order creation and 
-capture, and a payment dashboard. Deployable with npm install && npm start.
-```
-
-<details>
-<summary>Full prompt</summary>
   
 ```
-Build me a "PayPal Instant Storefront" app. The app has a setup page where I 
-enter my PayPal client-id and secret once, then a product creation form where 
-I enter a product name, description, price, currency, and upload or provide 
-product images. When I click "Generate Checkout Page" it creates a live, 
-shareable checkout URL like /checkout/abc123 that anyone can open — they see 
-the product details with images, price, description, and a working PayPal 
-Smart Payment Button. The payment flow should be fully server-side using the 
-PayPal Server SDK: backend creates the order when buyer clicks pay, captures 
-it after approval, and shows a confirmation page with order details. I should 
-be able to create multiple products and each gets its own unique checkout link 
-I can share with anyone. Include a simple dashboard where I can see all my 
-products and their checkout links, plus a list of completed payments showing 
-order ID, buyer info, amount, and status for each product. The checkout pages 
-should be mobile-responsive and look like real professional product pages. 
-Support sandbox and live mode via environment variables. Only use the Orders 
-API and Payments API, do not use Transaction Search or Vault. Make it 
-deployable with npm install and npm start.
+/integrate-api-context-plugins Build me a "PayPal Instant Storefront" app. The app
+has a setup page where I enter my PayPal client-id and secret once, then a product
+creation form where I enter a product name, description, price, currency, and upload
+or provide product images. When I click "Generate Checkout Page" it creates a live,
+shareable checkout URL like /checkout/abc123 that anyone can open — they see the
+product details with images, price, description, and a working PayPal Smart Payment
+Button. The payment flow should be fully server-side using the PayPal Server SDK:
+backend creates the order when buyer clicks pay, captures it after approval, and
+shows a confirmation page with order details. I should be able to create multiple
+products and each gets its own unique checkout link I can share with anyone. Include
+a simple dashboard where I can see all my products and their checkout links, plus a
+list of completed payments showing order ID, buyer info, amount, and status for each
+product. The checkout pages should be mobile-responsive and look like real
+professional product pages. Support sandbox and live mode via environment variables.
+Only use the Orders API and Payments API, do not use Transaction Search or Vault.
+Make it deployable with npm install and npm start.
 ```
-
-</details>
 
 **How the tools were used:**
 
@@ -222,25 +144,96 @@ deployable with npm install and npm start.
 
 </details>
 
-## Why API Integration Breaks AI Coding Agents
+---
 
-![Integration without API Context Plugins](assets/images/image-1.png)
+## Example Prompts to Try
 
-API integration is not pattern generation — it is contract enforcement. SDKs encode strict models, auth flows, and version-specific behavior. Approximating any of it produces compile failures, runtime bugs, and security gaps.
+The best way to experience API Context Plugins is to paste these prompts directly into Cursor or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
 
-Without authoritative SDK context, an agent falls back on two unreliable sources: training data that may not match the SDK version in use, and web search results that are often sanitized — code samples stripped of critical detail or reconstructed from incomplete examples. Neither reflects the actual SDK contract. The result is mixed patterns, misinterpreted auth flows, and speculative code that requires repeated correction.
+<details>
+<summary><strong>Quickstart: your first API call</strong></summary>
 
-| Approach | Complete Integration | Problem |
-|----------|---|---------|
-| LLMs.txt | ❌ | Static docs — no SDK-native patterns, no idiomatic code |
-| AI without context | ❌ | Trained on historical data — may generate outdated or incorrect integration code |
-| **API Context Plugin** | ✅ | SDK-generated, version-aware context grounded in the actual SDK |
+```
+/integrate-api-context-plugins Set up the Spotify TypeScript SDK and fetch my top 5 tracks.
+Show me the complete client initialization and the API call.
+```
+
+```
+/integrate-api-context-plugins How do I authenticate with the Twilio API and send an SMS?
+Give me the full PHP setup including the SDK client and the send call.
+```
+
+```
+/integrate-api-context-plugins Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
+```
+
+</details>
+
+<details>
+<summary><strong>Framework-specific integration</strong></summary>
+
+```
+/integrate-api-context-plugins I'm building a Next.js app. Integrate the Google Maps Places API
+to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
+```
+
+```
+/integrate-api-context-plugins I'm using Laravel. Show me how to send a Twilio SMS when a user
+registers. Include the PHP SDK setup, client initialization, and the controller code.
+```
+
+```
+/integrate-api-context-plugins I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
+```
+
+</details>
+
+<details>
+<summary><strong>Chaining tools for full integrations</strong></summary>
+
+These prompts are designed to exercise the full plugin workflow; from API discovery through endpoint lookup to production-ready code.
+
+```
+/integrate-api-context-plugins I want to add real-time order shipping notifications to my
+Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me
+the full integration: SDK setup, the correct endpoint and its parameters, and the TypeScript code.
+```
+
+```
+/integrate-api-context-plugins I need to post a Slack message every time a Spotify track changes
+in my playlist monitoring app. Walk me through integrating both APIs in TypeScript — start by
+discovering what's available, then show me the auth setup and the exact API calls.
+```
+
+```
+/integrate-api-context-plugins In my ASP.NET Core app, I want to geocode user addresses using
+Google Maps and cache the results. Look up the geocode endpoint and response model, then
+generate the C# code including error handling.
+```
+
+</details>
+
+<details>
+<summary><strong>Debugging and error handling</strong></summary>
+
+```
+/integrate-api-context-plugins My Spotify API call is returning 401. What OAuth flow should I
+be using and how does the TypeScript SDK handle token refresh automatically?
+```
+
+```
+/integrate-api-context-plugins My Slack message posts are failing intermittently with rate limit
+errors. How does the Python SDK expose rate limit information and what's the recommended retry
+pattern?
+```
+
+</details>
 
 ---
 
 ## Measured Results
 
-Four experiments on PayPal API integration and migration tasks across two production-grade .NET applications ([nopCommerce](https://github.com/nopSolutions/nopCommerce) and [eShop](https://github.com/dotnet/eshop)), run on Cursor with GPT-4.1 High. Same task, same IDE, same model — once with agent-only (web search), once with API Context Plugins.
+Four experiments on PayPal API integration tasks across two production-grade .NET applications, run on Cursor with GPT-4.1 High — same task, same IDE, same model, with and without API Context Plugins:
 
 | Metric | Agent only | Agent + API Context Plugins | Change |
 |--------|-----------|------------------------|--------|
@@ -250,9 +243,7 @@ Four experiments on PayPal API integration and migration tasks across two produc
 | Manual fixes | 11 | 0 | ↓ 100% |
 | Hallucinations | Multiple per run | 0 | ↓ ~Zero |
 
-**Token consumption without API Context Plugins can skyrocket.** In the most complex experiment (new PayPal checkout integration in eShop), the agent consumed **130.9M tokens** without API Context Plugins — compared to **40M with API Context Plugins**. The agent spent the bulk of those tokens searching the web, reconciling conflicting results, and correcting its own mistakes.
-
-Code quality scores (rated 1–5 across architecture, modularity, design patterns, error handling, and readability) improved from an average of **~3.0 to ~4.8** across all dimensions.
+Code quality scores improved from an average of **~3.0 to ~4.8** across architecture, modularity, error handling, and readability.
 
 → [Read the full case study](https://www.apimatic.io/product/context-plugins/case-study)
 
@@ -295,7 +286,7 @@ Have a request or found an issue? Use one of the templates below:
 
 - [Request a new language](../../issues/new?template=language-request.yml) — ask for support for a new SDK language (e.g., Swift, Kotlin, Rust)
 - [Request a new API](../../issues/new?template=api-request.yml) — ask for a new third-party API to be added to the catalog
-- [Request a tool or feature](../../issues/new?template=feature-request.yml) — suggest a new MCP tool or an improvement to an existing one
+- [Report an issue or give feedback](../../issues/new?template=feature-request.yml) — report a bug, suggest a new MCP tool, or share any other feedback
 
 For anything else, [open a blank issue](../../issues/new) or reach out at [support@apimatic.io](mailto:support@apimatic.io).
 
