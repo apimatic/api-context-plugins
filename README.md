@@ -15,7 +15,7 @@ An API Context Plugin is a one-click MCP Server that delivers SDK-generated API 
 When a developer asks their agent to "integrate the payments API," it normally guesses — pulling from outdated training data or generic patterns that don't match the actual SDK. An API Context Plugin solves this by giving the agent authoritative, version-aware, SDK-native context at the exact moment it's needed.
 
 
-![alt text](image.png)
+![API integration using API Context Plugins](assets/images/image.png)
 
 ---
 
@@ -50,15 +50,14 @@ The plugin gives the agent SDK-native context for the following APIs, available 
 
 ## What the Plugin Gives the Agent
 
-Once installed, the plugin exposes four tools to the agent — each mapped to a specific stage of the integration workflow:
+Once installed, the plugin exposes four tools to the agent. Each tool is mapped to a specific stage of the integration workflow:
 
 | Tool | Developer task it enables |
 |------|--------------------------|
-| `fetch_api` | **"What APIs can I use?"** — Lists all available APIs with their name, key, and description. The agent calls this first to discover which APIs are available for your project's language. |
-| `ask` | **"How do I integrate this?"** / **"How does this API work?"** — Chat with API Copilot for step-by-step integration guidance and general API questions: authentication setup, client initialization, feature behavior, framework-specific patterns ("How do I initialize the Twilio client in Laravel?"), and idiomatic SDK code samples. |
-| `model_search` | **"What does this request/response model look like?"** — Returns an SDK model's full definition and its typed properties by name. Call this before writing code that constructs request bodies or reads response objects. |
-| `endpoint_search` | **"What parameters does this endpoint method take?"** — Returns an SDK endpoint method's description, input parameters, and response shape by method name. |
-
+| `fetch_api` | Lists all available APIs with their name, key, and description. The agent calls this first to discover which APIs are available for your project's language. |
+| `ask` | Chat with API Copilot for step-by-step integration guidance and general API questions: authentication setup, client initialization, feature behavior, framework-specific patterns (e.g. "How do I initialize the Twilio client in Laravel?"), and idiomatic SDK code samples. |
+| `endpoint_search` | Returns an SDK endpoint method's description, input parameters, and response shape by method name. |
+| `model_search` | Returns an SDK model's full definition and its typed properties by name. Call this before writing code that constructs request bodies or reads response objects. |
 ---
 
 ## From Prompt to Code: How the Tools Work Together
@@ -75,7 +74,7 @@ The four tools are designed to chain together in a natural integration workflow.
 | 4 | `model_search` (`query=CreateMessageRequest`) | Returns the full typed request model with every available field |
 | 5 | `ask` (`query="How do I handle delivery status callbacks in Next.js?"`) | Returns webhook handling code aligned to the Twilio SDK |
 
-Each step completes in a single tool call. The agent handles the orchestration — you describe the goal, and it picks the right tool at the right time.
+Each step completes in a single tool call. The agent handles the orchestration. You describe the goal, and it picks the right tool at the right time.
 
 ---
 
@@ -98,10 +97,6 @@ How do I authenticate with the Twilio API and send an SMS? Give me the full PHP 
 Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
 ```
 
-```
-How do I get a route between two addresses using the Google Maps Directions API in TypeScript?
-```
-
 </details>
 
 <details>
@@ -119,27 +114,15 @@ I'm using Laravel. Show me how to send a Twilio SMS when a user registers. Inclu
 I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
 ```
 
-```
-I'm building a Ruby on Rails app. How do I post a Slack message to a channel when a background job finishes?
-```
-
-```
-I have a Java Spring Boot service. How do I call the Google Maps Geocoding API to convert an address to coordinates?
-```
-
 </details>
 
 <details>
 <summary><strong>Chaining tools for full integrations</strong></summary>
 
-These prompts are designed to exercise the full plugin workflow — from API discovery through endpoint lookup to production-ready code.
+These prompts are designed to exercise the full plugin workflow; from API discovery through endpoint lookup to production-ready code.
 
 ```
 I want to add real-time order shipping notifications to my Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me the full integration: SDK setup, the correct endpoint and its parameters, and the TypeScript code.
-```
-
-```
-Build a birthday reminder feature in my Laravel app: look up the correct Twilio endpoint for sending SMS, check the request model, then generate the PHP code that sends a personalized birthday message.
 ```
 
 ```
@@ -157,14 +140,6 @@ In my ASP.NET Core app, I want to geocode user addresses using Google Maps and c
 
 ```
 My Spotify API call is returning 401. What OAuth flow should I be using and how does the TypeScript SDK handle token refresh automatically?
-```
-
-```
-I'm getting a "21211" error from Twilio when sending SMS. What does this error mean and how do I handle it with the PHP SDK?
-```
-
-```
-What errors should I handle when calling the Google Maps Directions API in Java, and what do the SDK error types look like?
 ```
 
 ```
@@ -187,7 +162,7 @@ Without authoritative SDK context, an agent falls back on two unreliable sources
 | AI without context | ❌ | Trained on historical data — may generate outdated or incorrect integration code |
 | **API Context Plugin** | ✅ | SDK-generated, version-aware context grounded in the actual SDK |
 
-![Integration without API Context Plugins](image-1.png)
+![Integration without API Context Plugins](assets/images/image-1.png)
 
 ---
 
