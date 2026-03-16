@@ -8,7 +8,7 @@
 
 ---
 
-## What is an API Context Plugin?
+## What is API Context Plugin?
 
 
 ![API integration using API Context Plugins](assets/images/image.png)
