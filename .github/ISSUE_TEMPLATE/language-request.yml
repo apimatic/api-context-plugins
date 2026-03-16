@@ -48,10 +48,3 @@ body:
     validations:
       required: false
 
-  - type: checkboxes
-    id: checklist
-    attributes:
-      label: Checklist
-      options:
-        - label: I checked the [supported languages list](../../blob/main/README.md#supported-languages) and this language is not already available.
-          required: true
