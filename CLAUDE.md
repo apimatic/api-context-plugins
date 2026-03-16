@@ -11,3 +11,4 @@ API Context Plugins give coding assistants deterministic, version-aware API cont
 ## Skills
 
 - **integrate-api-context-plugins** — Guidance for discovering and integrating third-party APIs using the api-context-plugins MCP server
+- **onboard-api-context-plugins** — Interactive onboarding tour: explains the MCP, lists available APIs, lets the user pick one to explore, demonstrates model_search and endpoint_search live, and provides a menu of suggested actions

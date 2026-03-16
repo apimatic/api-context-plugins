@@ -27,6 +27,11 @@ One-click install into your IDE:
 |--------|-------------|
 | [Install](https://cursor.com/marketplace) | [Install](https://claude.com/plugins) |
 
+After installing, use the **`/onboard-api-context-plugins`** skill to get an interactive guided tour. The agent will explain the four MCP tools, show you all available APIs, let you pick one to explore, and demonstrate live lookups with runnable code samples:
+
+```
+/onboard-api-context-plugins
+```
 ---
 
 ## Supported APIs
@@ -87,6 +92,8 @@ Each step completes in a single tool call. The agent handles the orchestration. 
 
 <details>
 <summary><strong>PayPal Instant Storefront — Node.js/Express · 30 min</strong></summary>
+
+![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
 ![paypalsampleapp](https://github.com/user-attachments/assets/dc3e5b02-934e-44b5-9df9-20387557babe)
 
@@ -153,16 +160,25 @@ The best way to experience API Context Plugins is to paste these prompts directl
 <details>
 <summary><strong>Quickstart: your first API call</strong></summary>
 
+---
+
+![Spotify](https://img.shields.io/badge/Spotify-1DB954?logo=spotify&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ```
 /integrate-api-context-plugins Set up the Spotify TypeScript SDK and fetch my top 5 tracks.
 Show me the complete client initialization and the API call.
 ```
 
+---
+
+![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
 ```
 /integrate-api-context-plugins How do I authenticate with the Twilio API and send an SMS?
 Give me the full PHP setup including the SDK client and the send call.
 ```
 
+---
+
+![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 ```
 /integrate-api-context-plugins Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
 ```
@@ -172,19 +188,28 @@ Give me the full PHP setup including the SDK client and the send call.
 <details>
 <summary><strong>Framework-specific integration</strong></summary>
 
+![Google Maps](https://img.shields.io/badge/Google%20Maps-4285F4?logo=googlemaps&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ```
 /integrate-api-context-plugins I'm building a Next.js app. Integrate the Google Maps Places API
 to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
 ```
+---
 
+
+![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white) ![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
 ```
 /integrate-api-context-plugins I'm using Laravel. Show me how to send a Twilio SMS when a user
 registers. Include the PHP SDK setup, client initialization, and the controller code.
 ```
 
+---
+
+![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white) ![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
 ```
 /integrate-api-context-plugins I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
 ```
+
+---
 
 </details>
 
@@ -193,39 +218,53 @@ registers. Include the PHP SDK setup, client initialization, and the controller 
 
 These prompts are designed to exercise the full plugin workflow; from API discovery through endpoint lookup to production-ready code.
 
+![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ```
 /integrate-api-context-plugins I want to add real-time order shipping notifications to my
 Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me
 the full integration: SDK setup, the correct endpoint and its parameters, and the TypeScript code.
 ```
 
+---
+
+![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=white) ![Spotify](https://img.shields.io/badge/Spotify-1DB954?logo=spotify&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ```
 /integrate-api-context-plugins I need to post a Slack message every time a Spotify track changes
 in my playlist monitoring app. Walk me through integrating both APIs in TypeScript — start by
 discovering what's available, then show me the auth setup and the exact API calls.
 ```
 
+---
+
+![Google Maps](https://img.shields.io/badge/Google%20Maps-4285F4?logo=googlemaps&logoColor=white) ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white) ![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
 ```
 /integrate-api-context-plugins In my ASP.NET Core app, I want to geocode user addresses using
 Google Maps and cache the results. Look up the geocode endpoint and response model, then
 generate the C# code including error handling.
 ```
+---
 
 </details>
 
 <details>
 <summary><strong>Debugging and error handling</strong></summary>
 
+![Spotify](https://img.shields.io/badge/Spotify-1DB954?logo=spotify&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ```
 /integrate-api-context-plugins My Spotify API call is returning 401. What OAuth flow should I
 be using and how does the TypeScript SDK handle token refresh automatically?
 ```
 
+---
+
+![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 ```
 /integrate-api-context-plugins My Slack message posts are failing intermittently with rate limit
 errors. How does the Python SDK expose rate limit information and what's the recommended retry
 pattern?
 ```
+
+---
 
 </details>
 
