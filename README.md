@@ -150,6 +150,50 @@ My Slack message posts are failing intermittently with rate limit errors. How do
 
 ---
 
+## Bootstrap Applications Using API Context Plugins
+
+<details>
+<summary><strong>PayPal Instant Storefront</strong></summary>
+
+**What was built:** A full Node.js/Express storefront with product management, shareable checkout links per product, PayPal Smart Payment Buttons, server-side order creation and capture, and a payment history dashboard.
+
+**The prompt:**
+
+```
+Build me a "PayPal Instant Storefront" app. The app has a setup page where I enter my PayPal client-id and secret once, then a product creation form where I enter a product name, description, price, currency, and upload or provide product images. When I click "Generate Checkout Page" it creates a live, shareable checkout URL like /checkout/abc123 that anyone can open — they see the product details with images, price, description, and a working PayPal Smart Payment Button. The payment flow should be fully server-side using the PayPal Server SDK: backend creates the order when buyer clicks pay, captures it after approval, and shows a confirmation page with order details. I should be able to create multiple products and each gets its own unique checkout link I can share with anyone. Include a simple dashboard where I can see all my products and their checkout links, plus a list of completed payments showing order ID, buyer info, amount, and status for each product. The checkout pages should be mobile-responsive and look like real professional product pages. Support sandbox and live mode via environment variables. Only use the Orders API and Payments API, do not use Transaction Search or Vault. Make it deployable with npm install and npm start.
+```
+
+**How the tools were used:**
+
+| Step | Tool | Query | What it returned |
+|------|------|-------|-----------------|
+| 1 | `endpoint_search` | `ordersCreate` | TypeScript method signature and required body structure |
+| 2 | `endpoint_search` | `captureOrder` | Capture contract, payer info extraction, capture ID location in response |
+| 3 | `endpoint_search` | `getOrder` | Order retrieval details for the confirmation page |
+| 4 | `model_search` | `AmountWithBreakdown` | Schema for correctly structuring item amounts and totals |
+| 5 | `model_search` | `PurchaseUnitRequest` | Required fields for order line items |
+| 6 | `ask` | SDK setup & auth | Client init, sandbox vs. live config, credential handling |
+| 7 | `ask` | Smart Payment Buttons | Frontend button integration aligned to the SDK |
+| 8 | `ask` | Deprecation guidance | Flagged `payer` and `application_context` as deprecated |
+| 9 | `ask` | Capture & confirmation | Full create → approve → capture flow with payer info extraction |
+
+**App outcome:**
+
+- One-time credential setup page with live sandbox validation
+- Product creation with name, description, price, currency, and image upload
+- Unique shareable checkout URL per product (`/checkout/abc123`)
+- Server-side order creation and capture — no client secrets exposed
+- Confirmation page with order ID, buyer info, and capture details
+- Dashboard with all products, total revenue, and payment history
+- Mobile-responsive checkout pages
+- Deployable with `npm install && npm start`
+
+**Build time:** 10 min generation + 20 min testing = **30 minutes total**
+
+![paypalsampleapp](https://github.com/user-attachments/assets/dc3e5b02-934e-44b5-9df9-20387557babe)
+
+</details>
+
 ## Why API Integration Breaks AI Coding Agents
 
 API integration is not pattern generation — it is contract enforcement. SDKs encode strict models, auth flows, and version-specific behavior. Approximating any of it produces compile failures, runtime bugs, and security gaps.
