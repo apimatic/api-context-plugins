@@ -31,7 +31,7 @@ One-click install into your IDE:
 
 ## Supported APIs
 
-The plugin gives the agent SDK-native context for the following APIs:
+The plugin gives the agent SDK-native context for the following APIs, available in TypeScript, C#, Python, Java, PHP, and Ruby:
 
 | API | Description |
 |-----|-------------|
@@ -45,22 +45,6 @@ The plugin gives the agent SDK-native context for the following APIs:
 | **Tesla Fleet Management API** | Vehicle and fleet operations: charging history, vehicle commands, energy management |
 | **Tesser API Portal** | Digital payments: payment intents, onchain payments, app management |
 | **Twilio API** | Communications: SMS, voice, video, and verification services |
-
----
-
-## Supported Languages
-
-Each plugin surfaces SDK-generated context for every major language. Pass the identifier as the `language` parameter in prompts or tool calls:
-
-| Language | Identifier |
-|----------|-----------|
-| TypeScript | `typescript` |
-| C# | `csharp` |
-| Python | `python` |
-| Java | `java` |
-| Go | `go` |
-| PHP | `php` |
-| Ruby | `ruby` |
 
 ---
 
@@ -197,7 +181,7 @@ API integration is not pattern generation — it is contract enforcement. SDKs e
 
 Without authoritative SDK context, an agent falls back on two unreliable sources: training data that may not match the SDK version in use, and web search results that are often sanitized — code samples stripped of critical detail or reconstructed from incomplete examples. Neither reflects the actual SDK contract. The result is mixed patterns, misinterpreted auth flows, and speculative code that requires repeated correction.
 
-| Approach | | Problem |
+| Approach | Complete Integration | Problem |
 |----------|---|---------|
 | LLMs.txt | ❌ | Static docs — no SDK-native patterns, no idiomatic code |
 | AI without context | ❌ | Trained on historical data — may generate outdated or incorrect integration code |
@@ -209,14 +193,19 @@ Without authoritative SDK context, an agent falls back on two unreliable sources
 
 ## Measured Results
 
-Tested against legacy code migration and new API integration in two production-grade applications:
+Four experiments on PayPal API integration and migration tasks across two production-grade .NET applications ([nopCommerce](https://github.com/nopSolutions/nopCommerce) and [eShop](https://github.com/dotnet/eshop)), run on Cursor with GPT-4.1 High. Same task, same IDE, same model — once with agent-only (web search), once with Context Plugins.
 
-- **2× faster integration** compared to working from documentation alone
-- **48% lower development cost**
-- **65% reduction in context usage** — the AI gets it done with fewer tokens
-- **~Zero hallucinations** — no fabricated endpoints or non-existent SDK methods
+| Metric | Agent only | Agent + Context Plugins | Change |
+|--------|-----------|------------------------|--------|
+| Compile / runtime errors | 16 | 1 | ↓ 91% |
+| Prompt iterations | 34 | 16 | ↓ 54% |
+| Token consumption | ~57M | ~20M | ↓ 65% |
+| Manual fixes | 11 | 0 | ↓ 100% |
+| Hallucinations | Multiple per run | 0 | ↓ ~Zero |
 
-From the internal blog post benchmark: token efficiency increases by 37%, integration success on complex APIs hits 83%, and code quality scores run ~30% higher on average with roughly 70% fewer security issues per thousand lines of code.
+**Token consumption without Context Plugins can skyrocket.** In the most complex experiment (new PayPal checkout integration in eShop), the agent consumed **130.9M tokens** without Context Plugins — compared to **40M with Context Plugins**. The agent spent the bulk of those tokens searching the web, reconciling conflicting results, and correcting its own mistakes.
+
+Code quality scores (rated 1–5 across architecture, modularity, design patterns, error handling, and readability) improved from an average of **~3.0 to ~4.8** across all dimensions.
 
 → [Read the full case study](https://www.apimatic.io/product/context-plugins/case-study)
 
