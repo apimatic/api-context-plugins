@@ -168,6 +168,7 @@ capture, and a payment dashboard. Deployable with npm install && npm start.
 
 <details>
 <summary>Full prompt</summary>
+  
 ```
 Build me a "PayPal Instant Storefront" app. The app has a setup page where I 
 enter my PayPal client-id and secret once, then a product creation form where 
