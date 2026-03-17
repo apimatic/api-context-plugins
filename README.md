@@ -215,6 +215,67 @@ logos anywhere.
 
 </details>
 
+<details>
+<summary><strong>Google Maps Restaurant Roulette — PHP · 30 min</strong></summary>
+
+![google-maps-sample-app](https://github.com/user-attachments/assets/eafab114-ccf8-42f9-84c3-bc9706706118)
+
+
+**What was built:** A PHP web app where users drop a pin (or use their location) on a Google Map, draw a travel-radius circle, and click "Spin" to randomly pick a restaurant within that radius. The app shows Google Places photos, a Street View storefront preview, and one-click directions — with a wheel animation and a "Spin Again" button for gamified suspense. Custom branding; credentials via `.env` file.
+
+**The prompt:**
+
+```
+/api-context-plugins Create a web application using php and google maps platform
+apis sdk. for credentials create an env file in which the user will provide the API
+Key. The user will Drop a pin (or use your location) on the map, draw a circle for
+how far you are willing to travel, and click "spin." The app picks a random restaurant
+within that radius, shows you photos from Google Places, a Street View preview of the
+storefront, and one-click directions. Not happy with the pick? Spin again. The wheel
+animation and suspense make it feel like a game.
+```
+
+**How the tools were used:**
+
+| Step | Tool | Query | What it returned |
+|------|------|-------|-----------------|
+| 1 | `fetch_api` | `language=php` | Available APIs; identified Google Maps Platform SDK with key `googlemaps` (also: `paypal`, `spotify`, `maxio`, `verizon`) |
+| 2 | `ask` | SDK setup, API key auth configuration | `composer require sdksio/google-maps-platform-sdk:1.0.3`, `GoogleMapsPlatformClientBuilder::init()` with `CustomQueryAuthenticationCredentialsBuilder::init('key')`, `.env` structure, `Environment::PRODUCTION` |
+| 3 | `ask` | How to search for nearby restaurants within a radius | Full code using `$client->getPlacesApi()->nearbySearch($location, $radius, 'restaurant', ...)`, response handling via `isSuccess()` / `getResult()`, iterating `Place[]` results |
+| 4 | `endpoint_search` | `nearbySearch` | Method signature — params `location` (`"lat,lng"`), `radius` (meters), `keyword`, `maxprice`, `minprice`, `opennow`, `pagetoken`, `rankby`, `type`, `language`; response type `PlacesNearbySearchResponse` |
+| 5 | `endpoint_search` | `placeDetails` | Method signature — params `placeId`, `fields[]` (Basic/Contact/Atmosphere categories), `sessiontoken`, `language`, `region`; response type `PlacesDetailsResponse` |
+| 6 | `endpoint_search` | `placePhoto` | Method signature — param `photoReference` (string), `maxheight`, `maxwidth` (1-1600px); response type `mixed` (raw image bytes) |
+| 7 | `endpoint_search` | `streetView` | Method signature — params `size` (`"{w}x{h}"`, max 640px), `fov`, `heading`, `location`, `pitch`, `radius`, `source`; response type `mixed` (image bytes) |
+| 8 | `endpoint_search` | `directions` | Method signature — params `destination`, `origin`, `mode`, `avoid`, `units`, `waypoints`, `language`, `region`; response type `DirectionsResponse` |
+| 9 | `model_search` | `PlacesNearbySearchResponse` | Properties: `results` (`Place[]`), `status` (`PlacesSearchStatus`), `nextPageToken`, `errorMessage`, `htmlAttributions` |
+| 10 | `model_search` | `PlacesDetailsResponse` | Properties: `result` (`Place`), `status` (`PlacesDetailsStatus`), `htmlAttributions`, `infoMessages` |
+| 11 | `model_search` | `Place` | Full model — `name`, `placeId`, `formattedAddress`, `geometry` (`Geometry`), `rating`, `userRatingsTotal`, `priceLevel`, `photos` (`PlacePhoto[]`), `openingHours`, `types`, `vicinity`, `website`, `businessStatus`, `reviews` (`PlaceReview[]`) |
+| 12 | `model_search` | `PlacePhoto` | Properties: `photoReference` (string, used for `placePhoto` call), `height`, `width`, `htmlAttributions` |
+| 13 | `model_search` | `Geometry` | Properties: `location` (`LatLngLiteral`), `viewport` (`Bounds`) |
+| 14 | `model_search` | `LatLngLiteral` | Properties: `lat` (float), `lng` (float) — used to extract coordinates for Street View and directions |
+| 15 | `model_search` | `DirectionsResponse` | Properties: `routes` (`DirectionsRoute[]`), `status` (`DirectionsStatus`), `geocodedWaypoints`, `availableTravelModes`, `errorMessage` |
+| 16 | `ask` | How to use Street View Static API for a given lat/lng | `$client->getStreetViewApi()->streetView($size, null, null, $location)`, returns raw image bytes; `streetViewMetadata()` for availability check |
+
+**App outcome:**
+
+- `.env` file with `GOOGLE_MAPS_API_KEY` for credentials
+- Interactive Google Map with click-to-drop-pin or "Use My Location" (browser geolocation)
+- Draggable circle overlay to set travel radius (meters)
+- "Spin" button with wheel/slot-machine animation for suspense
+- Backend `nearbySearch` with `keyword=restaurant` within the drawn radius
+- Random restaurant selection from the `Place[]` results
+- Place details card showing:
+  - Restaurant name, rating, price level, and formatted address
+  - Google Places photos carousel via `placePhoto` with `photoReference`
+  - Street View storefront preview via `streetView` using the place's lat/lng
+  - One-click directions link (Directions API or Google Maps URL with `origin` and `destination`)
+- "Spin Again" button to re-roll without changing the pin/radius
+- Pagination support via `nextPageToken` for more results
+- Mobile-responsive map and card layout
+- Deployable with `composer install && php -S localhost:8000`
+
+</details>
+
 ---
 
 ## Example Prompts to Try
