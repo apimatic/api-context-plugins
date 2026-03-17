@@ -156,6 +156,8 @@ Make it deployable with npm install and npm start.
 
 ![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&labelColor=3776AB) ![Flask](https://img.shields.io/badge/-Flask-000000?logo=flask&logoColor=white&labelColor=000000)
 
+![spotifySampleApp](https://github.com/user-attachments/assets/63556c36-ba2d-417c-978c-5a4697e9b4e2)
+
 **What was built:** A Python/Flask web app where users authenticate via Spotify OAuth, fetch their top artists and tracks, retrieve audio features in batch, and analyze the data to produce a personalized "Music DNA" card — featuring a radar chart of average audio features, top 5 genres, most obscure artist, and a generated personality label — with a download/share button. Custom branding only; no Spotify logos.
 
 **The prompt:**
