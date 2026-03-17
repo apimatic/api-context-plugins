@@ -1,0 +1,77 @@
+﻿name: Issue / Feedback
+description: Report a bug, share feedback, or suggest an improvement to API Context Plugins
+title: "[Feedback]: <short description>"
+labels: ["feedback"]
+assignees: []
+projects: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to report a bug, share feedback on the plugin experience, or suggest an improvement to an existing tool or response quality.
+
+  - type: dropdown
+    id: feedback_type
+    attributes:
+      label: Type
+      options:
+        - Bug report
+        - Incorrect or hallucinated response
+        - Poor response quality
+        - Enhancement to an existing tool
+        - Improvement to prompts or responses
+        - IDE / integration issue
+        - Other feedback
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the issue or feedback clearly. What happened? What did you expect?
+      placeholder: e.g., The ask tool returned incorrect SDK method names for the Spotify API when I asked about OAuth setup.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce (for bugs)
+      description: If reporting a bug, list the steps that led to the issue.
+      placeholder: |
+        1. Installed the plugin in Cursor
+        2. Asked: "How do I initialize the Spotify client in TypeScript?"
+        3. Agent returned a method that does not exist in the SDK
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What did you expect the plugin or agent to do?
+      placeholder: e.g., Return the correct SpotifywebapiClient initialization code with valid method names.
+    validations:
+      required: false
+
+  - type: textarea
+    id: example_prompt
+    attributes:
+      label: Prompt or context (optional)
+      description: Paste the prompt you used or describe the task context that triggered the issue.
+      placeholder: e.g., "/integrate-api-context-plugins Set up the Spotify TypeScript SDK"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How much does this affect your workflow?
+      options:
+        - Minor inconvenience
+        - Significant issue - affects my work regularly
+        - Blocking - cannot use the plugin because of this
+    validations:
+      required: true
+

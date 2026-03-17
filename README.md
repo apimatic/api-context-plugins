@@ -102,22 +102,22 @@ Each step completes in a single tool call. The agent handles the orchestration. 
 **The prompt:**
   
 ```
-/integrate-api-context-plugins Build me a "PayPal Instant Storefront" app. The app
-has a setup page where I enter my PayPal client-id and secret once, then a product
-creation form where I enter a product name, description, price, currency, and upload
-or provide product images. When I click "Generate Checkout Page" it creates a live,
-shareable checkout URL like /checkout/abc123 that anyone can open — they see the
-product details with images, price, description, and a working PayPal Smart Payment
-Button. The payment flow should be fully server-side using the PayPal Server SDK:
-backend creates the order when buyer clicks pay, captures it after approval, and
-shows a confirmation page with order details. I should be able to create multiple
-products and each gets its own unique checkout link I can share with anyone. Include
-a simple dashboard where I can see all my products and their checkout links, plus a
-list of completed payments showing order ID, buyer info, amount, and status for each
-product. The checkout pages should be mobile-responsive and look like real
-professional product pages. Support sandbox and live mode via environment variables.
-Only use the Orders API and Payments API, do not use Transaction Search or Vault.
-Make it deployable with npm install and npm start.
+/integrate-api-context-plugins Build me a "PayPal Instant Storefront" app.
+The app has a setup page where I enter my PayPal client-id and secret once, then
+a product creation form where I enter a product name, description, price, currency,
+and upload or provide product images. When I click "Generate Checkout Page" it
+creates a live, shareable checkout URL like /checkout/abc123 that anyone can open —
+they see the product details with images, price, description, and a working PayPal
+Smart Payment Button. The payment flow should be fully server-side using the PayPal
+Server SDK: backend creates the order when buyer clicks pay, captures it after
+approval, and shows a confirmation page with order details. I should be able to
+create multiple products and each gets its own unique checkout link I can share
+with anyone. Include a simple dashboard where I can see all my products and their
+checkout links, plus a list of completed payments showing order ID, buyer info,
+amount, and status for each product. The checkout pages should be mobile-responsive
+and look like real professional product pages. Support sandbox and live mode via
+environment variables. Only use the Orders API and Payments API, do not use
+Transaction Search or Vault. Make it deployable with npm install and npm start.
 ```
 
 **How the tools were used:**
@@ -251,16 +251,18 @@ in a Python script and posting a message to a channel.
 
 ![Google Maps](https://img.shields.io/badge/-Google%20Maps-4285F4?logo=googlemaps&logoColor=white&labelColor=4285F4) ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=nextdotjs&logoColor=white&labelColor=000000) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-api-context-plugins I'm building a Next.js app. Integrate the Google Maps Places API
-to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
+/integrate-api-context-plugins I'm building a Next.js app. Integrate the Google Maps
+Places API to search for nearby restaurants and display them on a page.
+Use the TypeScript SDK.
 ```
 
 ---
 
 ![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?logo=laravel&logoColor=white&labelColor=FF2D20) ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&labelColor=777BB4)
 ```
-/integrate-api-context-plugins I'm using Laravel. Show me how to send a Twilio SMS when a user
-registers. Include the PHP SDK setup, client initialization, and the controller code.
+/integrate-api-context-plugins I'm using Laravel. Show me how to send a Twilio SMS
+when a user registers. Include the PHP SDK setup, client initialization, and the
+controller code.
 ```
 
 ---
@@ -280,27 +282,29 @@ These prompts are designed to exercise the full plugin workflow; from API discov
 
 ![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=nextdotjs&logoColor=white&labelColor=000000) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-api-context-plugins I want to add real-time order shipping notifications to my
-Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me
-the full integration: SDK setup, the correct endpoint and its parameters, and the TypeScript code.
+/integrate-api-context-plugins I want to add real-time order shipping notifications
+to my Next.js store. Use Twilio to send an SMS when the order status changes to
+"shipped". Show me the full integration: SDK setup, the correct endpoint and its
+parameters, and the TypeScript code.
 ```
 
 ---
 
 ![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-api-context-plugins I need to post a Slack message every time a Spotify track changes
-in my playlist monitoring app. Walk me through integrating both APIs in TypeScript — start by
-discovering what's available, then show me the auth setup and the exact API calls.
+/integrate-api-context-plugins I need to post a Slack message every time a Spotify
+track changes in my playlist monitoring app. Walk me through integrating both APIs
+in TypeScript — start by discovering what's available, then show me the auth setup
+and the exact API calls.
 ```
 
 ---
 
 ![Google Maps](https://img.shields.io/badge/-Google%20Maps-4285F4?logo=googlemaps&logoColor=white&labelColor=4285F4) ![ASP.NET Core](https://img.shields.io/badge/-ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white&labelColor=512BD4) ![C#](https://img.shields.io/badge/-C%23-239120?logo=csharp&logoColor=white&labelColor=239120)
 ```
-/integrate-api-context-plugins In my ASP.NET Core app, I want to geocode user addresses using
-Google Maps and cache the results. Look up the geocode endpoint and response model, then
-generate the C# code including error handling.
+/integrate-api-context-plugins In my ASP.NET Core app, I want to geocode user
+addresses using Google Maps and cache the results. Look up the geocode endpoint
+and response model, then generate the C# code including error handling.
 ```
 
 </details>
@@ -310,17 +314,17 @@ generate the C# code including error handling.
 
 ![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-api-context-plugins My Spotify API call is returning 401. What OAuth flow should I
-be using and how does the TypeScript SDK handle token refresh automatically?
+/integrate-api-context-plugins My Spotify API call is returning 401. What OAuth flow
+should I be using and how does the TypeScript SDK handle token refresh automatically?
 ```
 
 ---
 
 ![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&labelColor=3776AB)
 ```
-/integrate-api-context-plugins My Slack message posts are failing intermittently with rate limit
-errors. How does the Python SDK expose rate limit information and what's the recommended retry
-pattern?
+/integrate-api-context-plugins My Slack message posts are failing intermittently
+with rate limit errors. How does the Python SDK expose rate limit information and
+what's the recommended retry pattern?
 ```
 
 </details>
@@ -383,7 +387,7 @@ Have a request or found an issue? Use one of the templates below:
 
 - [Request a new language](../../issues/new?template=language-request.yml) — ask for support for a new SDK language (e.g., Swift, Kotlin, Rust)
 - [Request a new API](../../issues/new?template=api-request.yml) — ask for a new third-party API to be added to the catalog
-- [Report an issue or give feedback](../../issues/new?template=feature-request.yml) — report a bug, suggest a new MCP tool, or share any other feedback
+- [Report an issue or give feedback](../../issues/new?template=issue-feedback.yml) — report a bug, share feedback, or suggest an improvement to an existing tool
 
 For anything else, [open a blank issue](../../issues/new) or reach out at [support@apimatic.io](mailto:support@apimatic.io).
 
