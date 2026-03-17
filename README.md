@@ -3,8 +3,8 @@
 **SDK-native API context, delivered directly into your AI coding agent.**
 
 [![Product Page](https://img.shields.io/badge/Product-Context%20Plugins-blue)](https://www.apimatic.io/product/context-plugins)
-[![Available for Cursor](https://img.shields.io/badge/IDE-Cursor-orange)](https://cursor.com/marketplace)
-[![Available for Claude Code](https://img.shields.io/badge/IDE-Claude%20Code-purple)](https://claude.com/plugins)
+[![Available for Cursor](https://img.shields.io/badge/Cursor-IDE-orange?logo=cursor&logoColor=white)](https://cursor.com/marketplace)
+[![Available for Claude Code](https://img.shields.io/badge/Claude%20Code-IDE-purple?logo=anthropic&logoColor=white)](https://claude.com/plugins)
 
 ---
 
@@ -93,7 +93,7 @@ Each step completes in a single tool call. The agent handles the orchestration. 
 <details>
 <summary><strong>PayPal Instant Storefront — Node.js/Express · 30 min</strong></summary>
 
-![PayPal](https://img.shields.io/badge/PayPal-003087?logo=paypal&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express-000000?logo=express&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![PayPal](https://img.shields.io/badge/-PayPal-003087?logo=paypal&logoColor=white&labelColor=003087) ![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=nodedotjs&logoColor=white&labelColor=339933) ![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white&labelColor=000000) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black&labelColor=F7DF1E)
 
 ![paypalsampleapp](https://github.com/user-attachments/assets/dc3e5b02-934e-44b5-9df9-20387557babe)
 
@@ -153,6 +153,8 @@ Make it deployable with npm install and npm start.
 
 <details>
 <summary><strong>Spotify Music DNA Card — Python/Flask · 30 min</strong></summary>
+
+![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&labelColor=3776AB) ![Flask](https://img.shields.io/badge/-Flask-000000?logo=flask&logoColor=white&labelColor=000000)
 
 **What was built:** A Python/Flask web app where users authenticate via Spotify OAuth, fetch their top artists and tracks, retrieve audio features in batch, and analyze the data to produce a personalized "Music DNA" card — featuring a radar chart of average audio features, top 5 genres, most obscure artist, and a generated personality label — with a download/share button. Custom branding only; no Spotify logos.
 
@@ -220,9 +222,7 @@ The best way to experience API Context Plugins is to paste these prompts directl
 <details>
 <summary><strong>Quickstart: your first API call</strong></summary>
 
----
-
-![Spotify](https://img.shields.io/badge/Spotify-1DB954?logo=spotify&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
 /integrate-api-context-plugins Set up the Spotify TypeScript SDK and fetch my top 5 tracks.
 Show me the complete client initialization and the API call.
@@ -230,7 +230,7 @@ Show me the complete client initialization and the API call.
 
 ---
 
-![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
+![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&labelColor=777BB4)
 ```
 /integrate-api-context-plugins How do I authenticate with the Twilio API and send an SMS?
 Give me the full PHP setup including the SDK client and the send call.
@@ -238,9 +238,10 @@ Give me the full PHP setup including the SDK client and the send call.
 
 ---
 
-![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&labelColor=3776AB)
 ```
-/integrate-api-context-plugins Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
+/integrate-api-context-plugins Walk me through initializing the Slack API client
+in a Python script and posting a message to a channel.
 ```
 
 </details>
@@ -248,15 +249,15 @@ Give me the full PHP setup including the SDK client and the send call.
 <details>
 <summary><strong>Framework-specific integration</strong></summary>
 
-![Google Maps](https://img.shields.io/badge/Google%20Maps-4285F4?logo=googlemaps&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Google Maps](https://img.shields.io/badge/-Google%20Maps-4285F4?logo=googlemaps&logoColor=white&labelColor=4285F4) ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=nextdotjs&logoColor=white&labelColor=000000) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
 /integrate-api-context-plugins I'm building a Next.js app. Integrate the Google Maps Places API
 to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
 ```
+
 ---
 
-
-![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white) ![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
+![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?logo=laravel&logoColor=white&labelColor=FF2D20) ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&labelColor=777BB4)
 ```
 /integrate-api-context-plugins I'm using Laravel. Show me how to send a Twilio SMS when a user
 registers. Include the PHP SDK setup, client initialization, and the controller code.
@@ -264,12 +265,11 @@ registers. Include the PHP SDK setup, client initialization, and the controller 
 
 ---
 
-![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white) ![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
+![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![ASP.NET Core](https://img.shields.io/badge/-ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white&labelColor=512BD4) ![C#](https://img.shields.io/badge/-C%23-239120?logo=csharp&logoColor=white&labelColor=239120)
 ```
-/integrate-api-context-plugins I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
+/integrate-api-context-plugins I have an ASP.NET Core app. Add Twilio webhook handling
+so I can receive delivery status callbacks when an SMS is sent.
 ```
-
----
 
 </details>
 
@@ -278,7 +278,7 @@ registers. Include the PHP SDK setup, client initialization, and the controller 
 
 These prompts are designed to exercise the full plugin workflow; from API discovery through endpoint lookup to production-ready code.
 
-![Twilio](https://img.shields.io/badge/Twilio-F22F46?logo=twilio&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=nextdotjs&logoColor=white&labelColor=000000) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
 /integrate-api-context-plugins I want to add real-time order shipping notifications to my
 Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me
@@ -287,7 +287,7 @@ the full integration: SDK setup, the correct endpoint and its parameters, and th
 
 ---
 
-![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=white) ![Spotify](https://img.shields.io/badge/Spotify-1DB954?logo=spotify&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
 /integrate-api-context-plugins I need to post a Slack message every time a Spotify track changes
 in my playlist monitoring app. Walk me through integrating both APIs in TypeScript — start by
@@ -296,20 +296,19 @@ discovering what's available, then show me the auth setup and the exact API call
 
 ---
 
-![Google Maps](https://img.shields.io/badge/Google%20Maps-4285F4?logo=googlemaps&logoColor=white) ![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white) ![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
+![Google Maps](https://img.shields.io/badge/-Google%20Maps-4285F4?logo=googlemaps&logoColor=white&labelColor=4285F4) ![ASP.NET Core](https://img.shields.io/badge/-ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white&labelColor=512BD4) ![C#](https://img.shields.io/badge/-C%23-239120?logo=csharp&logoColor=white&labelColor=239120)
 ```
 /integrate-api-context-plugins In my ASP.NET Core app, I want to geocode user addresses using
 Google Maps and cache the results. Look up the geocode endpoint and response model, then
 generate the C# code including error handling.
 ```
----
 
 </details>
 
 <details>
 <summary><strong>Debugging and error handling</strong></summary>
 
-![Spotify](https://img.shields.io/badge/Spotify-1DB954?logo=spotify&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
 /integrate-api-context-plugins My Spotify API call is returning 401. What OAuth flow should I
 be using and how does the TypeScript SDK handle token refresh automatically?
@@ -317,22 +316,20 @@ be using and how does the TypeScript SDK handle token refresh automatically?
 
 ---
 
-![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&labelColor=3776AB)
 ```
 /integrate-api-context-plugins My Slack message posts are failing intermittently with rate limit
 errors. How does the Python SDK expose rate limit information and what's the recommended retry
 pattern?
 ```
 
----
-
 </details>
 
 ---
 
-## Measured Results
+## Measured Impact
 
-Four experiments on PayPal API integration tasks across two production-grade .NET applications, run on Cursor with GPT-4.1 High — same task, same IDE, same model, with and without API Context Plugins:
+Tested across four PayPal API integration tasks on two production-grade .NET applications — same task, same IDE (Cursor), same model (GPT-4.1 High), run with and without API Context Plugins. Here's what changed:
 
 | Metric | Agent only | Agent + API Context Plugins | Change |
 |--------|-----------|------------------------|--------|
