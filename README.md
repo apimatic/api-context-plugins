@@ -218,6 +218,8 @@ logos anywhere.
 <details>
 <summary><strong>Google Maps Restaurant Roulette — PHP · 30 min</strong></summary>
 
+![Google Maps](https://img.shields.io/badge/-Google%20Maps-4285F4?logo=googlemaps&logoColor=white&labelColor=4285F4) ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&labelColor=777BB4) ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black&labelColor=F7DF1E)
+
 ![google-maps-sample-app](https://github.com/user-attachments/assets/eafab114-ccf8-42f9-84c3-bc9706706118)
 
 
