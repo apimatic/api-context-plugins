@@ -41,7 +41,6 @@ The plugin gives the agent SDK-native context for the following APIs, available 
 | **Google Maps APIs** | Location services: geocoding, directions, distance matrix, elevation, roads, and places |
 | **PayPal Server SDK** | Payment flows: orders, payments, vault, transaction search, and subscriptions |
 | **PayQuicker API** | Payment and financial services: program agreements, bank accounts, spendback quotes |
-| **PostNL Ecommerce APIs** | Postal and logistics: delivery dates, barcodes, shipment status, parcel creation |
 | **Slack API** | Workspace automation: OAuth bots, messaging, conversation management |
 | **Spotify Web API** | Music and podcasts: library management, playback control, discovery |
 | **Tesla Fleet Management API** | Vehicle and fleet operations: charging history, vehicle commands, energy management |
