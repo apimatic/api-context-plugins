@@ -430,10 +430,15 @@ For API providers: [request a demo](https://www.apimatic.io/request-demo) to gen
 
 ```
 ContextPlugins/
-├── .claude-plugin/     # Claude Code plugin configuration (mcp.json, plugin.json)
-├── .cursor-plugin/     # Cursor plugin configuration (mcp.json, plugin.json)
+├── .claude-mcp.json    # Claude Code MCP server configuration
+├── .claude-plugin/     # Claude Code plugin configuration
+│   └── plugin.json
+├── .cursor-mcp.json    # Cursor MCP server configuration
+├── .cursor-plugin/     # Cursor plugin configuration
+│   └── plugin.json
 ├── .github/
 │   └── ISSUE_TEMPLATE/ # Issue templates for API, language, and feature requests
+├── .mcp.json           # VS Code MCP server configuration
 ├── assets/             # Logos and static assets
 ├── skills/
 │   ├── integrate-api-context-plugins/  # AI agent skill for end-to-end API integration guidance
