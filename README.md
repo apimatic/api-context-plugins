@@ -24,10 +24,10 @@ One-click install into your IDE:
 |--------|-------------|
 | [Install](https://cursor.com/marketplace) | [Install](https://claude.com/plugins) |
 
-After installing, use the **`/onboard-contextmatic`** skill to get an interactive guided tour. The agent will explain the four MCP tools, show you all available APIs, let you pick one to explore, and demonstrate live lookups with runnable code samples:
+After installing, use the **`/onboard-context-matic`** skill to get an interactive guided tour. The agent will explain the four MCP tools, show you all available APIs, let you pick one to explore, and demonstrate live lookups with runnable code samples:
 
 ```
-/onboard-contextmatic
+/onboard-context-matic
 ```
 ---
 
@@ -62,7 +62,7 @@ Once installed, the plugin exposes four tools to the agent. Each tool is mapped 
 | `endpoint_search` | Returns an SDK endpoint method's description, input parameters, and response shape by method name. |
 | `model_search` | Returns an SDK model's full definition and its typed properties by name. Call this before writing code that constructs request bodies or reads response objects. |
 
-For step-by-step guidance on using these tools together, invoke the `/integrate-contextmatic` skill in your agent. It tells the agent when and how to call each tool throughout your integration workflow.
+For step-by-step guidance on using these tools together, invoke the `/integrate-context-matic` skill in your agent. It tells the agent when and how to call each tool throughout your integration workflow.
 
 ---
 
@@ -70,7 +70,7 @@ For step-by-step guidance on using these tools together, invoke the `/integrate-
 
 The four tools are designed to chain together in a natural integration workflow. Here is a concrete example of what happens under the hood when the agent receives a real task:
 
-**Your prompt:** _"/integrate-contextmatic Add Twilio SMS notifications to my Next.js app. Send a text when an order ships."_
+**Your prompt:** _"/integrate-context-matic Add Twilio SMS notifications to my Next.js app. Send a text when an order ships."_
 
 | Step | Tool called | What it returns |
 |------|-------------|----------------|
@@ -98,7 +98,7 @@ Each step completes in a single tool call. The agent handles the orchestration. 
 **The prompt:**
   
 ```
-/integrate-contextmatic Build me a "PayPal Instant Storefront" app.
+/integrate-context-matic Build me a "PayPal Instant Storefront" app.
 The app has a setup page where I enter my PayPal client-id and secret once, then
 a product creation form where I enter a product name, description, price, currency,
 and upload or provide product images. When I click "Generate Checkout Page" it
@@ -159,7 +159,7 @@ Transaction Search or Vault. Make it deployable with npm install and npm start.
 **The prompt:**
 
 ```
-/contextmatic Create a web app using Python where users log in with Spotify,
+/integrate-context-matic Create a web app using Python where users log in with Spotify,
 fetch their top artists and top tracks, then fetch audio features for those tracks.
 Analyze the data to calculate average audio features, find the most obscure artist,
 determine the top 5 genres, and generate a "music personality" label based on the
@@ -224,7 +224,7 @@ logos anywhere.
 **The prompt:**
 
 ```
-/contextmatic Create a web application using php and google maps platform
+/integrate-context-matic Create a web application using php and google maps platform
 apis sdk. for credentials create an env file in which the user will provide the API
 Key. The user will Drop a pin (or use your location) on the map, draw a circle for
 how far you are willing to travel, and click "spin." The app picks a random restaurant
@@ -285,7 +285,7 @@ The best way to experience ContextMatic is to paste these prompts directly into 
 
 ![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-contextmatic Set up the Spotify TypeScript SDK and fetch my top 5 tracks.
+/integrate-context-matic Set up the Spotify TypeScript SDK and fetch my top 5 tracks.
 Show me the complete client initialization and the API call.
 ```
 
@@ -293,7 +293,7 @@ Show me the complete client initialization and the API call.
 
 ![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&labelColor=777BB4)
 ```
-/integrate-contextmatic How do I authenticate with the Twilio API and send an SMS?
+/integrate-context-matic How do I authenticate with the Twilio API and send an SMS?
 Give me the full PHP setup including the SDK client and the send call.
 ```
 
@@ -301,7 +301,7 @@ Give me the full PHP setup including the SDK client and the send call.
 
 ![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&labelColor=3776AB)
 ```
-/integrate-contextmatic Walk me through initializing the Slack API client
+/integrate-context-matic Walk me through initializing the Slack API client
 in a Python script and posting a message to a channel.
 ```
 
@@ -312,7 +312,7 @@ in a Python script and posting a message to a channel.
 
 ![Google Maps](https://img.shields.io/badge/-Google%20Maps-4285F4?logo=googlemaps&logoColor=white&labelColor=4285F4) ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=nextdotjs&logoColor=white&labelColor=000000) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-contextmatic I'm building a Next.js app. Integrate the Google Maps
+/integrate-context-matic I'm building a Next.js app. Integrate the Google Maps
 Places API to search for nearby restaurants and display them on a page.
 Use the TypeScript SDK.
 ```
@@ -321,7 +321,7 @@ Use the TypeScript SDK.
 
 ![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![Laravel](https://img.shields.io/badge/-Laravel-FF2D20?logo=laravel&logoColor=white&labelColor=FF2D20) ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&labelColor=777BB4)
 ```
-/integrate-contextmatic I'm using Laravel. Show me how to send a Twilio SMS
+/integrate-context-matic I'm using Laravel. Show me how to send a Twilio SMS
 when a user registers. Include the PHP SDK setup, client initialization, and the
 controller code.
 ```
@@ -330,7 +330,7 @@ controller code.
 
 ![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![ASP.NET Core](https://img.shields.io/badge/-ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white&labelColor=512BD4) ![C#](https://img.shields.io/badge/-C%23-239120?logo=csharp&logoColor=white&labelColor=239120)
 ```
-/integrate-contextmatic I have an ASP.NET Core app. Add Twilio webhook handling
+/integrate-context-matic I have an ASP.NET Core app. Add Twilio webhook handling
 so I can receive delivery status callbacks when an SMS is sent.
 ```
 
@@ -343,7 +343,7 @@ These prompts are designed to exercise the full plugin workflow; from API discov
 
 ![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=nextdotjs&logoColor=white&labelColor=000000) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-contextmatic I want to add real-time order shipping notifications
+/integrate-context-matic I want to add real-time order shipping notifications
 to my Next.js store. Use Twilio to send an SMS when the order status changes to
 "shipped". Show me the full integration: SDK setup, the correct endpoint and its
 parameters, and the TypeScript code.
@@ -353,7 +353,7 @@ parameters, and the TypeScript code.
 
 ![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-contextmatic I need to post a Slack message every time a Spotify
+/integrate-context-matic I need to post a Slack message every time a Spotify
 track changes in my playlist monitoring app. Walk me through integrating both APIs
 in TypeScript — start by discovering what's available, then show me the auth setup
 and the exact API calls.
@@ -363,7 +363,7 @@ and the exact API calls.
 
 ![Google Maps](https://img.shields.io/badge/-Google%20Maps-4285F4?logo=googlemaps&logoColor=white&labelColor=4285F4) ![ASP.NET Core](https://img.shields.io/badge/-ASP.NET%20Core-512BD4?logo=dotnet&logoColor=white&labelColor=512BD4) ![C#](https://img.shields.io/badge/-C%23-239120?logo=csharp&logoColor=white&labelColor=239120)
 ```
-/integrate-contextmatic In my ASP.NET Core app, I want to geocode user
+/integrate-context-matic In my ASP.NET Core app, I want to geocode user
 addresses using Google Maps and cache the results. Look up the geocode endpoint
 and response model, then generate the C# code including error handling.
 ```
@@ -375,7 +375,7 @@ and response model, then generate the C# code including error handling.
 
 ![Spotify](https://img.shields.io/badge/-Spotify-1DB954?logo=spotify&logoColor=white&labelColor=1DB954) ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&labelColor=3178C6)
 ```
-/integrate-contextmatic My Spotify API call is returning 401. What OAuth flow
+/integrate-context-matic My Spotify API call is returning 401. What OAuth flow
 should I be using and how does the TypeScript SDK handle token refresh automatically?
 ```
 
@@ -383,7 +383,7 @@ should I be using and how does the TypeScript SDK handle token refresh automatic
 
 ![Slack](https://img.shields.io/badge/-Slack-4A154B?logo=slack&logoColor=white&labelColor=4A154B) ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&labelColor=3776AB)
 ```
-/integrate-contextmatic My Slack message posts are failing intermittently
+/integrate-context-matic My Slack message posts are failing intermittently
 with rate limit errors. How does the Python SDK expose rate limit information and
 what's the recommended retry pattern?
 ```
