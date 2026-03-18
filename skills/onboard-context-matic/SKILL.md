@@ -1,17 +1,17 @@
 ---
-name: onboard-api-context-plugins
+name: onboard-context-matic
 description: >
-  Interactive onboarding tour for the api-context-plugins MCP server. Walks the user through what the
+  Interactive onboarding tour for the context-matic MCP server. Walks the user through what the
   server does, shows all available APIs, lets them pick one to explore, explains it in their project
   language, demonstrates model_search and endpoint_search live, and ends with a menu of things
   the user can ask the agent to do. USE FOR: first-time setup; "what can this MCP do?"; "show me
-  the available APIs"; "onboard me"; "how do I use the api-context-plugins server"; "give me a tour".
-  DO NOT USE FOR: actually integrating an API end-to-end (use integrate-api-context-plugins instead).
+  the available APIs"; "onboard me"; "how do I use the context-matic server"; "give me a tour".
+  DO NOT USE FOR: actually integrating an API end-to-end (use integrate-context-matic instead).
 ---
 
-# Onboarding: API Context Plugins MCP
+# Onboarding: ContextMatic MCP
 
-This skill delivers a guided, interactive tour of the `api-context-plugins` MCP server. Follow every
+This skill delivers a guided, interactive tour of the `context-matic` MCP server. Follow every
 phase in order. Stop after each interaction point and wait for the user's reply before continuing.
 
 > **Agent conduct rules — follow throughout the entire skill:**

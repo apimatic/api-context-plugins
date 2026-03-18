@@ -1,8 +1,8 @@
 {
-  "name": "api-context-plugins",
-  "displayName": "API Context Plugins",
+  "name": "context-matic",
+  "displayName": "ContextMatic",
   "version": "0.1.0",
-  "description": "General-purpose AI models are trained on public code and documentation, much of it outdated. They have no awareness of an actual API version, latest SDKs or the recommended workflows. \n\nAPI Context Plugins give coding assistants deterministic, version-aware API context, generated directly from your API definition and SDKs. Instead of scraping public documentation or guessing from memory, the AI is grounded in the exact OpenAPI definition, current SDK versions, executable, idiomatic code samples, and recommended integration workflows.",
+  "description": "General-purpose AI models are trained on public code and documentation, much of it outdated. They have no awareness of an actual API version, latest SDKs or the recommended workflows. \n\nContextMatic give coding assistants deterministic, version-aware API context, generated directly from your API definition and SDKs. Instead of scraping public documentation or guessing from memory, the AI is grounded in the exact OpenAPI definition, current SDK versions, executable, idiomatic code samples, and recommended integration workflows.",
   "author": {
     "name": "APIMatic",
     "email": "developer@apimatic.io"

@@ -1,5 +1,5 @@
 ﻿name: Issue / Feedback
-description: Report a bug, share feedback, or suggest an improvement to API Context Plugins
+description: Report a bug, share feedback, or suggest an improvement to ContextMatic
 title: "[Feedback]: <short description>"
 labels: ["feedback"]
 assignees: []
@@ -60,7 +60,7 @@ body:
     attributes:
       label: Prompt or context (optional)
       description: Paste the prompt you used or describe the task context that triggered the issue.
-      placeholder: e.g., "/integrate-api-context-plugins Set up the Spotify TypeScript SDK"
+      placeholder: e.g., "/integrate-contextmatic Set up the Spotify TypeScript SDK"
     validations:
       required: false
 

@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Request a new API to be added to the API Context Plugins catalog. Once added, your AI assistant will be able to deliver SDK-generated context for that API across all supported languages.
+        Request a new API to be added to the ContextMatic catalog. Once added, your AI assistant will be able to deliver SDK-generated context for that API across all supported languages.
 
   - type: input
     id: api_name
