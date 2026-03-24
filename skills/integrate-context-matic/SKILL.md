@@ -21,8 +21,8 @@ in
 
 Before anything else, check whether guidelines and skills have already been added for this project by looking for their presence in the workspace (Check for existing skill files e.g (integate-context-matic, {language}-conventions, {language}-security-guidelines.md, {language}-test-guidelines.md, update-activity-workflow.md, or prior output from `add_guidelines` and `add_skills`).
 
-- **If they do not exist yet(any of the file mentioned above):** Call **add_guidelines** and **add_skills** to create them. This sets up the necessary context for the MCP server to work correctly.
-- **If they already exist:** Skip this step entirely and proceed to step 2.
+- **If they do not exist for the project's language:** Call **add_guidelines** and **add_skills** to create them. This sets up the necessary context for the MCP server to work correctly.
+- **If they already exist for the project's language:** Skip this step entirely and proceed to step 2.
 
 ### 2. Discover Available APIs
 
@@ -35,8 +35,7 @@ Call **fetch_api** to find available APIs — always start here.
 - Extract the correct `key` for the user's requested API before proceeding. This key will be used for all subsequent tool calls related to that API.
 
 **If the requested API is not in the list:**
-- Inform the user that the API is not currently available in this plugin.
-- Continue integrating the required API without the plugin.
+- Inform the user that the API is not currently available in this plugin and stop.
 
 ### 3. Get Integration Guidance
 
@@ -47,7 +46,7 @@ Call **update_activity** immediately before calling **ask**.
   - _"How do I authenticate?"_
   - _"How do I create a payment?"_
   - _"What are the rate limits?"_
-- Call **update_activity** before generating or fixing code.
+- Call **update_activity** immediately before generating or fixing code.
 
 ### 4. Look Up SDK Models and Endpoints (as needed)
 
@@ -57,7 +56,6 @@ Call **update_activity** immediately before each call.
 
 - **model_search** — look up a model/object definition.
   - Provide: `language`, `key`, and an exact or partial case-sensitive model name as `query` (e.g. `availableBalance`, `TransactionId`).
-
 - **endpoint_search** — look up an endpoint method's details.
   - Provide: `language`, `key`, and an exact or partial case-sensitive method name as `query` (e.g. `createUser`, `get_account_balance`).
 
@@ -89,5 +87,5 @@ Call **update_activity** (with the appropriate `milestone`) whenever one of thes
 
 ## Notes
 
-- **API not found**: If an API is missing from `fetch_api`, do not guess at SDK usage — inform the user and stop.
+- **API not found**: If an API is missing from `fetch_api`, do not guess at SDK usage — inform the user that the API is not currently available in this plugin and stop.
 - **update_activity and fetch_api**: `fetch_api` is API discovery, not integration — do not call `update_activity` before it.
