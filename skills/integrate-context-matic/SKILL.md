@@ -14,14 +14,14 @@ Apply this skill when the user:
 - Wants to add a client or SDK for an external service
 - Requests implementation that depends on an external API
 - Mentions a specific API (e.g. PayPal, Twilio) and implementation or integration
-
+in  
 ## Workflow
 
 ### 1. Ensure Guidelines and Skills Exist
 
-Before anything else, check whether guidelines and skills have already been added for this project by looking for their presence in the workspace (e.g. existing skill files, instruction files, or prior output from `add_guidelines` / `add_skills`).
+Before anything else, check whether guidelines and skills have already been added for this project by looking for their presence in the workspace (e.g. existing skill files, instruction files, or prior output from `add_guidelines_and_skills`).
 
-- **If they do not exist yet:** Call **add_guidelines** first, then **add_skills**. This sets up the necessary context for the MCP server to work correctly.
+- **If they do not exist yet:** Call **add_guidelines_and_skills** to create them. This sets up the necessary context for the MCP server to work correctly.
 - **If they already exist:** Skip this step entirely and proceed to step 2.
 
 ### 2. Discover Available APIs
@@ -40,23 +40,26 @@ Call **fetch_api** to find available APIs — always start here.
 
 ### 3. Get Integration Guidance
 
-Call **ask** with: `language`, `key` (from step 2), and your `query`.
+Call **update_activity** immediately before calling **ask**.
 
+- Provide `ask` with: `language`, `key` (from step 1), and your `query`.
 - Break complex questions into smaller focused queries for best results:
-  - _"How do I authenticate?"_
-  - _"How do I create a payment?"_
-  - _"What are the rate limits?"_
-- After completing any step where an integration milestone has been reached, immediately call **update_activity** with the appropriate `milestone` before continuing.
+  - _"How do I authenticate?"_
+  - _"How do I create a payment?"_
+  - _"What are the rate limits?"_
+- Call **update_activity** before generating or fixing code.
 
 ### 4. Look Up SDK Models and Endpoints (as needed)
 
 These tools return definitions only — they do not call APIs or generate code.
 
+Call **update_activity** immediately before each call.
+
 - **model_search** — look up a model/object definition.
-  - Provide: `language`, `key`, and an exact or partial case-sensitive model name as `query` (e.g. `availableBalance`, `TransactionId`).
+  - Provide: `language`, `key`, and an exact or partial case-sensitive model name as `query` (e.g. `availableBalance`, `TransactionId`).
 
 - **endpoint_search** — look up an endpoint method's details.
-  - Provide: `language`, `key`, and an exact or partial case-sensitive method name as `query` (e.g. `createUser`, `get_account_balance`).
+  - Provide: `language`, `key`, and an exact or partial case-sensitive method name as `query` (e.g. `createUser`, `get_account_balance`).
 
 ### 5. Record Milestones
 
@@ -66,22 +69,25 @@ Call **update_activity** (with the appropriate `milestone`) whenever one of thes
 |---|---|
 | `sdk_setup` | SDK packages installed and environment confirmed set up |
 | `auth_configured` | API keys or auth configured, ready to make first call |
-| `first_call_made` | First API call code written and executed |
+| `first_call_attempted` | First API call code written and executed |
+| `first_call_succeeded` | Successful response from first API call received |
 | `error_encountered` | Developer reports a bug, error response, or failing call |
 | `error_resolved` | Fix applied and API call confirmed working |
+| `tests_passing` | Integration tests written and confirmed passing |
 
 ## Checklist
 
-- [ ] `add_guidelines` called (or confirmed already present — then skipped)
-- [ ] `add_skills` called (or confirmed already present — then skipped)
+- [ ] `add_guidelines_and_skills` called (or confirmed already present — then skipped)
 - [ ] `fetch_api` called with correct `language` for the project
 - [ ] Correct `key` identified for the requested API (or user informed if not found)
+- [ ] `update_activity` called as first tool when integration begins
+- [ ] `update_activity` called immediately before every `ask`, `model_search`, and `endpoint_search`
+- [ ] `update_activity` called with the appropriate `milestone` at each integration milestone
 - [ ] `ask` used for integration guidance and code samples
 - [ ] `model_search` / `endpoint_search` used as needed for SDK details
-- [ ] `update_activity` called with the appropriate `milestone` at each integration milestone
 - [ ] Project compiles after each code modification
 
 ## Notes
 
 - **API not found**: If an API is missing from `fetch_api`, do not guess at SDK usage — inform the user and stop.
-- **update_activity**: Only call this when a concrete integration milestone is reached. Do NOT call it before/after `ask`, `model_search`, `endpoint_search`, or `fetch_api` calls — only at the milestone moments listed in the table above.
+- **update_activity and fetch_api**: `fetch_api` is API discovery, not integration — do not call `update_activity` before it.
