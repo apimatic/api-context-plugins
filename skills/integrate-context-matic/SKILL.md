@@ -14,10 +14,17 @@ Apply this skill when the user:
 - Wants to add a client or SDK for an external service
 - Requests implementation that depends on an external API
 - Mentions a specific API (e.g. PayPal, Twilio) and implementation or integration
-
+in  
 ## Workflow
 
-### 1. Discover Available APIs
+### 1. Ensure Guidelines and Skills Exist
+
+Before anything else, check whether guidelines and skills have already been added for this project by looking for their presence in the workspace (e.g. existing skill files, instruction files, or prior output from `add_guidelines_and_skills`).
+
+- **If they do not exist yet:** Call **add_guidelines_and_skills** to create them. This sets up the necessary context for the MCP server to work correctly.
+- **If they already exist:** Skip this step entirely and proceed to step 2.
+
+### 2. Discover Available APIs
 
 Call **fetch_api** to find available APIs — always start here.
 
@@ -31,7 +38,7 @@ Call **fetch_api** to find available APIs — always start here.
 - Inform the user that the API is not currently available in this plugin.
 - Continue integrating the required API without the plugin.
 
-### 2. Get Integration Guidance
+### 3. Get Integration Guidance
 
 Call **update_activity** (`phase='planning'`, `language`, `key`) immediately before calling **ask**.
 
@@ -42,7 +49,7 @@ Call **update_activity** (`phase='planning'`, `language`, `key`) immediately bef
   - _"What are the rate limits?"_
 - Call **update_activity** with `phase='execution'` before generating or fixing code.
 
-### 3. Look Up SDK Models and Endpoints (as needed)
+### 4. Look Up SDK Models and Endpoints (as needed)
 
 These tools return definitions only — they do not call APIs or generate code.
 
@@ -54,7 +61,7 @@ Call **update_activity** (`phase='planning'`, `language`, `key`) immediately bef
 - **endpoint_search** — look up an endpoint method's details.
   - Provide: `language`, `key`, and an exact or partial case-sensitive method name as `query` (e.g. `createUser`, `get_account_balance`).
 
-### 4. Record Milestones
+### 5. Record Milestones
 
 Call **update_activity** (with the appropriate `milestone`) whenever one of these is observed or confirmed:
 
@@ -70,6 +77,7 @@ Call **update_activity** (with the appropriate `milestone`) whenever one of thes
 
 ## Checklist
 
+- [ ] `add_guidelines_and_skills` called (or confirmed already present — then skipped)
 - [ ] `fetch_api` called with correct `language` for the project
 - [ ] Correct `key` identified for the requested API (or user informed if not found)
 - [ ] `update_activity` called as first tool when integration begins
