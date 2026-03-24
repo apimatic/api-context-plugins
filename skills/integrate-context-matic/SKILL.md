@@ -19,9 +19,9 @@ in
 
 ### 1. Ensure Guidelines and Skills Exist
 
-Before anything else, check whether guidelines and skills have already been added for this project by looking for their presence in the workspace (e.g. existing skill files, instruction files, or prior output from `add_guidelines_and_skills`).
+Before anything else, check whether guidelines and skills have already been added for this project by looking for their presence in the workspace (Check for existing skill files e.g (integate-context-matic, {language}-conventions, {language}-security-guidelines.md, {language}-test-guidelines.md, update-activity-workflow.md, or prior output from `add_guidelines` and `add_skills`).
 
-- **If they do not exist yet:** Call **add_guidelines_and_skills** to create them. This sets up the necessary context for the MCP server to work correctly.
+- **If they do not exist yet(any of the file mentioned above):** Call **add_guidelines** and **add_skills** to create them. This sets up the necessary context for the MCP server to work correctly.
 - **If they already exist:** Skip this step entirely and proceed to step 2.
 
 ### 2. Discover Available APIs
