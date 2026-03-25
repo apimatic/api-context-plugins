@@ -41,7 +41,7 @@ Call **fetch_api** to find available APIs — always start here.
 
 Call **update_activity** immediately before calling **ask**.
 
-- Provide `ask` with: `language`, `key` (from step 1), and your `query`.
+- Provide `ask` with: `language`, `key` (from step 2), and your `query`.
 - Break complex questions into smaller focused queries for best results:
   - _"How do I authenticate?"_
   - _"How do I create a payment?"_
