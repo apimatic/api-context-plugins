@@ -293,7 +293,7 @@ Show me the complete client initialization and the API call.
 
 ![Twilio](https://img.shields.io/badge/-Twilio-F22F46?logo=twilio&logoColor=white&labelColor=F22F46) ![PHP](https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&labelColor=777BB4)
 ```
-/integrate-context-matic How do I authenticate with the Twilio API and update my channel visibility to private?
+/integrate-context-matic How do I authenticate with the Twilio API and send an SMS?
 Give me the full PHP setup including the SDK client and the send call.
 ```
 
