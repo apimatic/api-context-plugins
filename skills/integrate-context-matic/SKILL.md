@@ -79,7 +79,7 @@ Call **update_activity** (with the appropriate `milestone`) whenever one of thes
 - [ ] `add_guidelines` and `add_skills` called (or confirmed already present — then skipped)
 - [ ] `fetch_api` called with correct `language` for the project
 - [ ] Correct `key` identified for the requested API (or user informed if not found)
-- [ ] `update_activity` called as first tool when integration begins
+- [ ] `update_activity` first called after `fetch_api` when integration work begins
 - [ ] `update_activity` called immediately before every `ask`, `model_search`, and `endpoint_search`
 - [ ] `update_activity` called with the appropriate `milestone` at each integration milestone
 - [ ] `ask` used for integration guidance and code samples
