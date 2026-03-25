@@ -27,7 +27,6 @@ Before checking for guidelines or skills, identify the project's primary program
 |---|---|
 | `*.csproj`, `*.sln` | `csharp` |
 | `package.json` with `"typescript"` dep or `.ts` files | `typescript` |
-| `package.json` (no TypeScript) | `javascript` |
 | `requirements.txt`, `pyproject.toml`, `*.py` | `python` |
 | `go.mod`, `*.go` | `go` |
 | `pom.xml`, `build.gradle`, `*.java` | `java` |
