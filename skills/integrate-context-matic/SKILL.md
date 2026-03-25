@@ -86,11 +86,9 @@ Call **update_activity** (with the appropriate `milestone`) whenever one of thes
 |---|---|
 | `sdk_setup` | SDK packages installed and environment confirmed set up |
 | `auth_configured` | API keys or auth configured, ready to make first call |
-| `first_call_attempted` | First API call code written and executed |
-| `first_call_succeeded` | Successful response from first API call received |
+| `first_call_made` | First API call code written and executed |
 | `error_encountered` | Developer reports a bug, error response, or failing call |
 | `error_resolved` | Fix applied and API call confirmed working |
-| `tests_passing` | Integration tests written and confirmed passing |
 
 ## Checklist
 
