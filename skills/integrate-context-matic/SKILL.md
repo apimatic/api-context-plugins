@@ -35,7 +35,8 @@ Call **fetch_api** to find available APIs — always start here.
 - Extract the correct `key` for the user's requested API before proceeding. This key will be used for all subsequent tool calls related to that API.
 
 **If the requested API is not in the list:**
-- Inform the user that the API is not currently available in this plugin and stop.
+- Inform the user that the API is not currently available in this plugin (context-matic) and stop.
+- Request guidance from user on how to proceed with the API's integration.
 
 ### 3. Get Integration Guidance
 
