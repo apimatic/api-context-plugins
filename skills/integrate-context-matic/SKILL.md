@@ -19,7 +19,26 @@ Apply this skill when the user:
 
 ### 1. Ensure Guidelines and Skills Exist
 
-Before anything else, check whether guidelines and skills have already been added for this project by looking for their presence in the workspace. Check for existing skill and guideline files, e.g., `{language}-conventions`, `{language}-security-guidelines.md`, `{language}-test-guidelines.md`, `update-activity-workflow.md`, or prior output from `add_guidelines` and `add_skills`.
+#### 1a. Detect the Project's Primary Language
+
+Before checking for guidelines or skills, identify the project's primary programming language by inspecting the workspace:
+
+| File / Pattern | Language |
+|---|---|
+| `*.csproj`, `*.sln` | `csharp` |
+| `package.json` with `"typescript"` dep or `.ts` files | `typescript` |
+| `package.json` (no TypeScript) | `javascript` |
+| `requirements.txt`, `pyproject.toml`, `*.py` | `python` |
+| `go.mod`, `*.go` | `go` |
+| `pom.xml`, `build.gradle`, `*.java` | `java` |
+| `Gemfile`, `*.rb` | `ruby` |
+| `composer.json`, `*.php` | `php` |
+
+Use the detected language in all subsequent steps wherever `language` is required.
+
+#### 1b. Check for Existing Guidelines and Skills
+
+Check whether guidelines and skills have already been added for this project by looking for their presence in the workspace. Check for existing skill and guideline files, e.g., `{language}-conventions`, `{language}-security-guidelines.md`, `{language}-test-guidelines.md`, `update-activity-workflow.md`, or prior output from `add_guidelines` and `add_skills`.
 
 - **If they do not exist for the project's language:** Call **add_guidelines** and **add_skills** to create them. This sets up the necessary skills and guidelines for the MCP server to work correctly.
 - **If they already exist for the project's language:** Skip this step entirely and proceed to step 2.
@@ -28,8 +47,7 @@ Before anything else, check whether guidelines and skills have already been adde
 
 Call **fetch_api** to find available APIs — always start here.
 
-- Provide the `language` parameter matching the project's primary language (e.g. `csharp`, `python`, `typescript`, `go`, `java`, `ruby`, `php`).
-- Infer the language from the codebase (e.g. `.csproj` → `csharp`, `package.json` with TypeScript → `typescript`).
+- Provide the `language` parameter using the language detected in step 1a.
 - The response returns available APIs with their names, descriptions, and `key` values.
 - Identify the API that matches the user's request based on the name and description.
 - Extract the correct `key` for the user's requested API before proceeding. This key will be used for all subsequent tool calls related to that API.
@@ -76,6 +94,7 @@ Call **update_activity** (with the appropriate `milestone`) whenever one of thes
 
 ## Checklist
 
+- [ ] Project's primary language detected (step 1a)
 - [ ] `add_guidelines` and `add_skills` called (or confirmed already present — then skipped)
 - [ ] `fetch_api` called with correct `language` for the project
 - [ ] Correct `key` identified for the requested API (or user informed if not found)
