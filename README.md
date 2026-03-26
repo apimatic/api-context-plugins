@@ -22,7 +22,7 @@ One-click install into your IDE:
 
 | Cursor | Claude Code | VSCode |
 |--------|-------------|--------|
-| [Install](https://cursor.com/marketplace) | [Install](https://claude.com/plugins) | [Install](https://awesome-copilot.github.com) |
+| [Install](https://cursor.com/marketplace) | [Install](https://claude.com/plugins) | [Install](https://awesome-copilot.github.com/plugins/) |
 
 After installing, use the **`/onboard-context-matic`** skill to get an interactive guided tour. The agent will explain the four MCP tools, show you all available APIs, let you pick one to explore, and demonstrate live lookups with runnable code samples:
 
