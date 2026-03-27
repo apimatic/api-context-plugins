@@ -40,11 +40,12 @@ Use the detected language in all subsequent steps wherever `language` is require
 Check whether guidelines and skills have already been added for this project by looking for their presence in the workspace.
 
 - `{language}-conventions` is the skill produced by **add_skills**.
-- `{language}-security-guidelines.md`, `{language}-test-guidelines.md`, and `update-activity-workflow.md` are the guideline files produced by **add_guidelines**.
+- `{language}-security-guidelines.md` and `{language}-test-guidelines.md` are language-specific guideline files produced by **add_guidelines**.
+- `update-activity-workflow.md` is a workflow guideline file produced by **add_guidelines** (it is not language-specific).
 - Check these independently. Do not treat the presence of one set as proof that the other set already exists.
-- **If the guideline files are missing for the project's language:** Call **add_guidelines**.
+- **If any required guideline files for this project are missing:** Call **add_guidelines**.
 - **If `{language}-conventions` is missing for the project's language:** Call **add_skills**.
-- **If both the guideline files and `{language}-conventions` already exist:** Skip this step and proceed to step 2.
+- **If all required guideline files and `{language}-conventions` already exist:** Skip this step and proceed to step 2.
 
 ### 2. Discover Available APIs
 
