@@ -1,0 +1,13 @@
+{
+  "name": "apimatic",
+  "owner": {
+    "name": "APIMatic",
+    "email": "developer@apimatic.io"
+  },
+  "plugins": [
+    {
+      "name": "context-matic",
+      "source": "./"
+    }
+  ]
+}
