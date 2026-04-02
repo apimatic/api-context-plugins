@@ -189,9 +189,9 @@ Before calling, say something like: *"Let me fetch the `[endpoint name]` endpoin
 
 Pick a **representative endpoint** for the chosen API and call **`endpoint_search`** with an explicit argument object:
 
-- `key`: the API key you are demonstrating (for example, `paypal` or `spotify`)
-- `query`: the endpoint / SDK method name you want to look up (for example, `createOrder` or `getTrack`)
-- `language`: the user's project language (for example, `"typescript"` or `"python"`)
+- `key` = the API key you are demonstrating (for example, `paypal` or `spotify`)
+- `query` = the endpoint / SDK method name you want to look up (for example, `createOrder` or `getTrack`)
+- `language` = the user's project language (for example, `"typescript"` or `"python"`)
 
 For example:
 
