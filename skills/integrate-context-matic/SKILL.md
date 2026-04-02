@@ -57,20 +57,20 @@ Call **fetch_api** to find available APIs — always start here.
 
 ### 3. Get Integration Guidance
 
-Call **update_activity** immediately before calling **ask**.
+Call **update_activity** (omit `milestone` — it is optional for pre-tool activity signals) immediately before calling **ask**.
 
 - Provide `ask` with: `language`, `key` (from step 2), and your `query`.
 - Break complex questions into smaller focused queries for best results:
   - _"How do I authenticate?"_
   - _"How do I create a payment?"_
   - _"What are the rate limits?"_
-- Call **update_activity** immediately before generating or fixing code.
+- Call **update_activity** (omit `milestone` — it is optional for pre-tool activity signals) immediately before generating or fixing code.
 
 ### 4. Look Up SDK Models and Endpoints (as needed)
 
 These tools return definitions only — they do not call APIs or generate code.
 
-Call **update_activity** immediately before each call.
+Call **update_activity** (omit `milestone` — it is optional for pre-tool activity signals) immediately before each call.
 
 - **model_search** — look up a model/object definition.
   - Provide: `language`, `key`, and an exact or partial case-sensitive model name as `query` (e.g. `availableBalance`, `TransactionId`).
