@@ -1,12 +1,6 @@
 ---
 name: onboard-context-matic
-description: >
-  Interactive onboarding tour for the context-matic MCP server. Walks the user through what the
-  server does, shows all available APIs, lets them pick one to explore, explains it in their project
-  language, demonstrates model_search and endpoint_search live, and ends with a menu of things
-  the user can ask the agent to do. USE FOR: first-time setup; "what can this MCP do?"; "show me
-  the available APIs"; "onboard me"; "how do I use the context-matic server"; "give me a tour".
-  DO NOT USE FOR: actually integrating an API end-to-end (use integrate-context-matic instead).
+description: 'Interactive onboarding tour for the context-matic MCP server. Walks the user through what the server does, shows all available APIs, lets them pick one to explore, explains it in their project language, demonstrates model_search and endpoint_search live, and ends with a menu of things the user can ask the agent to do. USE FOR: first-time setup; "what can this MCP do?"; "show me the available APIs"; "onboard me"; "how do I use the context-matic server"; "give me a tour". DO NOT USE FOR: actually integrating an API end-to-end (use integrate-context-matic instead).'
 ---
 
 # Onboarding: ContextMatic MCP
@@ -30,7 +24,7 @@ phase in order. Stop after each interaction point and wait for the user's reply 
 Begin with a brief, plain-language explanation of what the server does. Say it in your own words
 based on the following facts:
 
-> The **api-context-plugins** MCP server solves a fundamental problem with AI-assisted coding: general
+> The **context-matic** MCP server solves a fundamental problem with AI-assisted coding: general
 > models are trained on public code that is often outdated, incorrect, or missing entirely for newer
 > SDK versions. This server acts as a **live, version-aware grounding layer**. Instead of the agent
 > guessing at SDK usage from training data, it queries the server for the *exact* SDK models,
@@ -52,8 +46,10 @@ Use the following facts as your source, but say it conversationally — do not p
 > | `model_search` | Looks up an SDK model/object definition and its typed properties | "What fields does an Order have?", "Is this property required?" | The model's name, description, and a full typed property list (required vs. optional, nested types) |
 > | `endpoint_search` | Looks up an endpoint method, its parameters, response type, and a runnable code sample | "Show me how to call createOrder", "What does getTrack return?" | Method signature, parameter types, response type, and a copy-paste-ready code sample |
 
-End this section by telling the user that you'll demonstrate all four tools live during the tour,
-starting with `fetch_api` right now.
+End this section by telling the user that you'll demonstrate the four core discovery and
+integration tools live during the tour, starting with `fetch_api` right now. Make it clear that
+this tour is focused on those core ContextMatic server tools rather than every possible helper the
+broader workflow might use.
 
 
 ---
@@ -160,7 +156,10 @@ Tell the user:
 
 Before calling, say something like: *"Let me search for the `[model name]` model so you can see what the result looks like."*
 
-Pick a **representative model** from the chosen API (examples below) and call **`model_search`**:
+Pick a **representative model** from the chosen API (examples below) and call **`model_search`** with:
+- `key` = the previously chosen API key (for example, `paypal` or `spotify`)
+- `language` = the detected project language
+- `query` = the representative model name you picked
 
 | API key | Good demo query |
 |---|---|
@@ -188,13 +187,18 @@ Tell the user:
 
 Before calling, say something like: *"Let me fetch the `[endpoint name]` endpoint so you can see the parameters and a live code sample."*
 
-Pick a **representative endpoint** for the chosen API and call **`endpoint_search`**:
+Pick a **representative endpoint** for the chosen API and call **`endpoint_search`** with an explicit argument object:
 
-| API key | Good demo query |
-|---|---|
-| `paypal` | `createOrder` |
-| `spotify` | `getTrack` |
+- `key`: the API key you are demonstrating (for example, `paypal` or `spotify`)
+- `query`: the endpoint / SDK method name you want to look up (for example, `createOrder` or `getTrack`)
+- `language`: the user's project language (for example, `"typescript"` or `"python"`)
 
+For example:
+
+| API key (`key`) | Endpoint name (`query`) | Example `language` |
+|---|---|---|
+| `paypal` | `createOrder` | user's project language |
+| `spotify` | `getTrack`   | user's project language |
 Display the result, pointing out:
 - The method name and description
 - The request parameters and their types
@@ -220,54 +224,54 @@ a formatted menu:
 
 **Quickstart: your first API call**
 ```
-/integrate-api-context-plugins Set up the Spotify TypeScript SDK and fetch my top 5 tracks.
+/integrate-context-matic Set up the Spotify TypeScript SDK and fetch my top 5 tracks.
 Show me the complete client initialization and the API call.
 ```
 ```
-/integrate-api-context-plugins How do I authenticate with the Twilio API and send an SMS?
+/integrate-context-matic How do I authenticate with the Twilio API and send an SMS?
 Give me the full PHP setup including the SDK client and the send call.
 ```
 ```
-/integrate-api-context-plugins Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
+/integrate-context-matic Walk me through initializing the Slack API client in a Python script and posting a message to a channel.
 ```
 
 **Framework-specific integration**
 ```
-/integrate-api-context-plugins I'm building a Next.js app. Integrate the Google Maps Places API
+/integrate-context-matic I'm building a Next.js app. Integrate the Google Maps Places API
 to search for nearby restaurants and display them on a page. Use the TypeScript SDK.
 ```
 ```
-/integrate-api-context-plugins I'm using Laravel. Show me how to send a Twilio SMS when a user
+/integrate-context-matic I'm using Laravel. Show me how to send a Twilio SMS when a user
 registers. Include the PHP SDK setup, client initialization, and the controller code.
 ```
 ```
-/integrate-api-context-plugins I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
+/integrate-context-matic I have an ASP.NET Core app. Add Twilio webhook handling so I can receive delivery status callbacks when an SMS is sent.
 ```
 
 **Chaining tools for full integrations**
 ```
-/integrate-api-context-plugins I want to add real-time order shipping notifications to my
+/integrate-context-matic I want to add real-time order shipping notifications to my
 Next.js store. Use Twilio to send an SMS when the order status changes to "shipped". Show me
 the full integration: SDK setup, the correct endpoint and its parameters, and the TypeScript code.
 ```
 ```
-/integrate-api-context-plugins I need to post a Slack message every time a Spotify track changes
+/integrate-context-matic I need to post a Slack message every time a Spotify track changes
 in my playlist monitoring app. Walk me through integrating both APIs in TypeScript — start by
 discovering what's available, then show me the auth setup and the exact API calls.
 ```
 ```
-/integrate-api-context-plugins In my ASP.NET Core app, I want to geocode user addresses using
+/integrate-context-matic In my ASP.NET Core app, I want to geocode user addresses using
 Google Maps and cache the results. Look up the geocode endpoint and response model, then
 generate the C# code including error handling.
 ```
 
 **Debugging and error handling**
 ```
-/integrate-api-context-plugins My Spotify API call is returning 401. What OAuth flow should I
+/integrate-context-matic My Spotify API call is returning 401. What OAuth flow should I
 be using and how does the TypeScript SDK handle token refresh automatically?
 ```
 ```
-/integrate-api-context-plugins My Slack message posts are failing intermittently with rate limit
+/integrate-context-matic My Slack message posts are failing intermittently with rate limit
 errors. How does the Python SDK expose rate limit information and what's the recommended retry
 pattern?
 ```
