@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "context-matic": {
+      "type": "http",
       "url": "https://chatbotapi.apimatic.io/mcp/plugins",
       "headers": {
         "X-Apimatic-Mcp-Client": "Cursor"
