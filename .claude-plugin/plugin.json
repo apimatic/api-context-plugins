@@ -10,5 +10,9 @@
   "homepage": "https://www.apimatic.io",
   "repository": "https://github.com/apimatic/api-context-plugins",
   "keywords": ["api context", "api integration", "mcp", "apimatic", "third-party-apis", "sdks"],
-  "mcpServers": "./.claude-mcp.json"
+  "mcpServers": "../.claude-mcp.json",
+  "skills": [
+    "../skills/integrate-context-matic",
+    "../skills/onboard-context-matic"
+  ]
 }
