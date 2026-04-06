@@ -25,44 +25,6 @@ Install ContextMatic in your coding agent:
 <details>
 <summary><strong>Cursor</strong></summary>
 
-Install from the [Cursor Directory listing](https://cursor.directory/plugins/contextmatic), or follow these steps:
-
-Install the plugin locally from GitHub into Cursor. These commands do not require a local checkout of this repository.
-
-**macOS / Linux**
-
-```bash
-PLUGIN_ROOT="$HOME/.cursor/plugins/local/context-matic"
-TEMP_DIR="$(mktemp -d)"
-mkdir -p "$HOME/.cursor/plugins/local"
-rm -rf "$PLUGIN_ROOT"
-curl -L https://github.com/apimatic/context-matic/archive/refs/heads/dev.zip -o "$TEMP_DIR/context-matic.zip"
-unzip -q "$TEMP_DIR/context-matic.zip" -d "$TEMP_DIR"
-mv "$TEMP_DIR/context-matic-dev" "$PLUGIN_ROOT"
-rm -rf "$TEMP_DIR"
-```
-
-**Windows PowerShell**
-
-```powershell
-$pluginRoot = Join-Path $HOME ".cursor\plugins\local\context-matic"
-$tempZip = Join-Path $env:TEMP "context-matic.zip"
-$tempDir = Join-Path $env:TEMP "context-matic-extract"
-New-Item -ItemType Directory -Force -Path (Split-Path $pluginRoot) | Out-Null
-if (Test-Path $pluginRoot) { Remove-Item $pluginRoot -Recurse -Force }
-if (Test-Path $tempZip) { Remove-Item $tempZip -Force }
-if (Test-Path $tempDir) { Remove-Item $tempDir -Recurse -Force }
-Invoke-WebRequest -Uri "https://github.com/apimatic/context-matic/archive/refs/heads/dev.zip" -OutFile $tempZip
-Expand-Archive -Path $tempZip -DestinationPath $tempDir -Force
-Move-Item -Path (Join-Path $tempDir "context-matic-dev") -Destination $pluginRoot
-Remove-Item $tempZip -Force
-Remove-Item $tempDir -Recurse -Force
-```
-
-Then restart Cursor, or run `Developer: Reload Window`.
-
-Alternatively, you can also manually install ContextMatic:
-
 1. Install the MCP server with [this one-click link](cursor://anysphere.cursor-deeplink/mcp/install?name=context-matic&config=eyJ1cmwiOiJodHRwczovL2NoYXRib3RhcGkuYXBpbWF0aWMuaW8vbWNwL3BsdWdpbnMiLCJoZWFkZXJzIjp7IlgtQXBpbWF0aWMtTWNwLUNsaWVudCI6IkN1cnNvciJ9fQ==).
 
 This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. 
