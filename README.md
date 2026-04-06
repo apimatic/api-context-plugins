@@ -33,7 +33,7 @@ Install from the [Cursor Directory listing](https://cursor.directory/plugins/con
 cursor://anysphere.cursor-deeplink/mcp/install?name=context-matic&config=eyJ1cmwiOiJodHRwczovL2NoYXRib3RhcGkuYXBpbWF0aWMuaW8vbWNwL3BsdWdpbnMiLCJoZWFkZXJzIjp7IlgtQXBpbWF0aWMtTWNwLUNsaWVudCI6IkN1cnNvciJ9fQ==
 ```
 
-This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. It does not read from the repo's root `.mcp.json` file, and it does not install the bundled skills.
+This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. 
 
 2. Ask your agent to install the bundled skills from these files:
 
@@ -49,6 +49,8 @@ Use prompts like these:
 ```text
 /create-skill [paste skills/onboard-context-matic/SKILL.md here]
 ```
+
+3. Ensure the `context-matic` MCP server is enabled by `Ctrl+Shift+P` > `>View: Open MCP Settings` > `context-matic` > enable
 
 </details>
 
@@ -79,6 +81,14 @@ Install in Claude Code with these commands:
 /reload-plugins
 ```
 
+4. View all installed MCP Servers:
+
+```text
+/mcp
+```
+
+5. Ensure the context-matic MCP Server is enabled by selecting context-matic in the returned list.
+
 Claude Code loads the plugin's Claude-specific MCP configuration from `.claude-mcp.json` via `.claude-plugin/plugin.json`.
 
 </details>
@@ -87,7 +97,7 @@ Claude Code loads the plugin's Claude-specific MCP configuration from `.claude-m
 <details>
 <summary><strong>VS Code</strong></summary>
 
-Install from the [Awesome Copilot Marketplace](https://awesome-copilot.github.com/plugins/#context-matic), or follow these steps in VS Code:
+Install it directly in VS Code from the Awesome Copilot Marketplace:
 
 1. Open the Extensions view with `Ctrl+Shift+X`.
 2. Search for the plugin with:
@@ -97,7 +107,7 @@ Install from the [Awesome Copilot Marketplace](https://awesome-copilot.github.co
 ```
 
 3. Select ContextMatic and click **Install**.
-4. Enable the bundled `context-matic` MCP server when prompted.
+4. Ensure the bundled `context-matic` MCP server is enabled by `Ctrl+Shift+P` > `>MCP: List Servers` > `context-matic` > enable
 
 </details>
 
