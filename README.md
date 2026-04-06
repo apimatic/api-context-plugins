@@ -3,8 +3,9 @@
 **SDK-native API context, delivered directly into your AI coding agent.**
 
 [![Product Page](https://img.shields.io/badge/Product-Context%20Plugins-blue)](https://www.apimatic.io/product/context-plugins)
-[![Available for Cursor](https://img.shields.io/badge/Cursor-IDE-orange?logo=cursor&logoColor=white)](https://cursor.com/marketplace)
-[![Available for Claude Code](https://img.shields.io/badge/Claude%20Code-IDE-purple?logo=anthropic&logoColor=white)](https://claude.com/plugins)
+[![Available for Cursor](https://img.shields.io/badge/Cursor-IDE-orange?logo=cursor&logoColor=white)](#cursor-install)
+[![Available for Claude Code](https://img.shields.io/badge/Claude%20Code-IDE-purple?logo=anthropic&logoColor=white)](#claude-code-install)
+[![Available for VS%20Code](https://img.shields.io/badge/VS%20Code-IDE-007ACC?logo=visualstudiocode&logoColor=white)](#vs-code-install)
 
 ---
 
@@ -18,11 +19,87 @@ When a developer asks their agent to "integrate the payments API," it normally g
 
 ## Try It Now
 
-One-click install into your IDE:
+Install ContextMatic in your coding agent:
 
-| Cursor | Claude Code | VSCode |
-|--------|-------------|--------|
-| [Install](https://cursor.com/marketplace) | [Install](https://claude.com/plugins) | [Install](https://awesome-copilot.github.com/plugins/) |
+<a id="cursor-install"></a>
+<details>
+<summary><strong>Cursor</strong></summary>
+
+Install from the [Cursor Directory listing](https://cursor.directory/plugins/contextmatic), or follow these steps:
+
+1. Install the MCP server with this one-click link:
+
+```text
+cursor://anysphere.cursor-deeplink/mcp/install?name=context-matic&config=eyJ1cmwiOiJodHRwczovL2NoYXRib3RhcGkuYXBpbWF0aWMuaW8vbWNwL3BsdWdpbnMiLCJoZWFkZXJzIjp7IlgtQXBpbWF0aWMtTWNwLUNsaWVudCI6IkN1cnNvciJ9fQ==
+```
+
+This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. It does not read from the repo's root `.mcp.json` file, and it does not install the bundled skills.
+
+2. Ask your agent to install the bundled skills from these files:
+
+- [skills/integrate-context-matic/SKILL.md](skills/integrate-context-matic/SKILL.md)
+- [skills/onboard-context-matic/SKILL.md](skills/onboard-context-matic/SKILL.md)
+
+Use prompts like these:
+
+```text
+/create-skill [paste skills/integrate-context-matic/SKILL.md here]
+```
+
+```text
+/create-skill [paste skills/onboard-context-matic/SKILL.md here]
+```
+
+</details>
+
+<a id="claude-code-install"></a>
+<details>
+<summary><strong>Claude Code</strong></summary>
+
+
+> *Note: Publishing to the [Claude plugins Marketplace](https://claude.com/plugins) is in progress.*
+
+Install in Claude Code with these commands:
+
+1. Add this repository as a marketplace:
+
+```text
+/plugin marketplace add apimatic/context-matic
+```
+
+2. Install the plugin:
+
+```text
+/plugin install context-matic@apimatic-context-matic
+```
+
+3. Reload plugins:
+
+```text
+/reload-plugins
+```
+
+Claude Code loads the plugin's Claude-specific MCP configuration from `.claude-mcp.json` via `.claude-plugin/plugin.json`.
+
+</details>
+
+<a id="vs-code-install"></a>
+<details>
+<summary><strong>VS Code</strong></summary>
+
+Install from the [Awesome Copilot Marketplace](https://awesome-copilot.github.com/plugins/#context-matic), or follow these steps in VS Code:
+
+1. Open the Extensions view with `Ctrl+Shift+X`.
+2. Search for the plugin with:
+
+```text
+@agentPlugins context-matic
+```
+
+3. Select ContextMatic and click **Install**.
+4. Enable the bundled `context-matic` MCP server when prompted.
+
+</details>
 
 After installing, use the **`/onboard-context-matic`** skill to get an interactive guided tour. The agent will explain the four MCP tools, show you all available APIs, let you pick one to explore, and demonstrate live lookups with runnable code samples:
 
@@ -278,7 +355,7 @@ animation and suspense make it feel like a game.
 
 ## Example Prompts to Try
 
-The best way to experience ContextMatic is to paste these prompts directly into Cursor or Claude Code after installing a plugin. Each prompt is written to naturally trigger the full tool chain.
+The best way to experience ContextMatic is to paste these prompts directly into Cursor, Claude Code, or VS Code after installing the plugin. Each prompt is written to naturally trigger the full tool chain.
 
 <details>
 <summary><strong>Quickstart: your first API call</strong></summary>
@@ -431,6 +508,7 @@ For API providers: [request a demo](https://www.apimatic.io/request-demo) to gen
 ContextMatic/
 ├── .claude-mcp.json    # Claude Code MCP server configuration
 ├── .claude-plugin/     # Claude Code plugin configuration
+│   ├── marketplace.json
 │   └── plugin.json
 ├── .cursor-mcp.json    # Cursor MCP server configuration
 ├── .cursor-plugin/     # Cursor plugin configuration
