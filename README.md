@@ -27,9 +27,7 @@ Install ContextMatic in your coding agent:
 
 1. Install the MCP server with this one-click.
    
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](cursor://anysphere.cursor-deeplink/mcp/install?name=context-matic&config=eyJ1cmwiOiJodHRwczovL2NoYXRib3RhcGkuYXBpbWF0aWMuaW8vbWNwL3BsdWdpbnMiLCJoZWFkZXJzIjp7IlgtQXBpbWF0aWMtTWNwLUNsaWVudCI6IkN1cnNvciJ9fQ==)
-
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](cursor://anysphere.cursor-deeplink/mcp/install?name=context-matic&config=eyJ1cmwiOiJodHRwczovL2NoYXRib3RhcGkuYXBpbWF0aWMuaW8vbWNwL3BsdWdpbnMiLCJoZWFkZXJzIjp7IlgtQXBpbWF0aWMtTWNwLUNsaWVudCI6IkN1cnNvciJ9fQ==)
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=context-matic&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vY2hhdGJvdGFwaS5hcGltYXRpYy5pby9tY3AvcGx1Z2lucyIsImhlYWRlcnMiOnsiWC1BcGltYXRpYy1NY3AtQ2xpZW50IjoiQ3Vyc29yIn19)
 
 This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. 
 
