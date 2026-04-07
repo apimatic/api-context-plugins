@@ -31,7 +31,7 @@ Install ContextMatic in your coding agent:
 
 This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. 
 
-3. Ask your agent to install the bundled skills from these files:
+2. Ask your agent to install the bundled skills from these files:
 
 - [skills/integrate-context-matic/SKILL.md](skills/integrate-context-matic/SKILL.md)
 - [skills/onboard-context-matic/SKILL.md](skills/onboard-context-matic/SKILL.md)
