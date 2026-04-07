@@ -12,5 +12,5 @@
   "repository": "https://github.com/apimatic/api-context-plugins",
   "keywords": [ "api context", "api integration", "mcp", "apimatic", "third-party-apis", "sdks" ],
   "logo": "assets/logo.svg",
-  "mcpServers": "../.cursor-mcp.json"
+  "mcpServers": "./.cursor-mcp.json"
 }
