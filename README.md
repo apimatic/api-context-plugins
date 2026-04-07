@@ -89,8 +89,6 @@ If prompted, choose `Install for you (user scope).`.
 
 5. Ensure the context-matic MCP Server is enabled by selecting context-matic in the returned list.
 
-Claude Code loads the plugin's Claude-specific MCP configuration from `.claude-mcp.json` via `.claude-plugin/plugin.json`.
-
 </details>
 
 <a id="vs-code-install"></a>
