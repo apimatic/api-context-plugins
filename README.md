@@ -25,16 +25,18 @@ Install ContextMatic in your coding agent:
 <details>
 <summary><strong>Cursor</strong></summary>
 
+> *Prerequisite: Cursor v2.6.14 or higher is required for ContextMatic*
+
 1. Install the MCP server with this one-click.
    
-<a href="https://cursor.com/en-US/install-mcp?name=context-matic&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vY2hhdGJvdGFwaS5hcGltYXRpYy5pby9tY3AvcGx1Z2lucyIsImhlYWRlcnMiOnsiWC1BcGltYXRpYy1NY3AtQ2xpZW50IjoiQ3Vyc29yIn19" target="_blank"><img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Install MCP Server"></a>
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=context-matic&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vY2hhdGJvdGFwaS5hcGltYXRpYy5pby9tY3AvcGx1Z2lucyIsImhlYWRlcnMiOnsiWC1BcGltYXRpYy1NY3AtQ2xpZW50IjoiQ3Vyc29yIn19)
 
 This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. 
 
 2. Ask your agent to install the bundled skills from these files:
 
-- <a href="skills/integrate-context-matic/SKILL.md" target="_blank">skills/integrate-context-matic/SKILL.md</a>
-- <a href="skills/onboard-context-matic/SKILL.md" target="_blank">skills/onboard-context-matic/SKILL.md</a>
+- [skills/integrate-context-matic/SKILL.md](skills/integrate-context-matic/SKILL.md)
+- [skills/onboard-context-matic/SKILL.md](skills/onboard-context-matic/SKILL.md)
 
 Use prompts like these:
 
@@ -54,6 +56,7 @@ Use prompts like these:
 <details>
 <summary><strong>Claude Code</strong></summary>
 
+> *Prerequisite: Claude Code v2.1.92 or higher is required for ContextMatic*
 
 > *Note: Publishing to the [Claude plugins Marketplace](https://claude.com/plugins) is in progress.*
 
@@ -93,6 +96,8 @@ Claude Code loads the plugin's Claude-specific MCP configuration from `.claude-m
 <a id="vs-code-install"></a>
 <details>
 <summary><strong>VS Code</strong></summary>
+
+> *Prerequisite: Visual Studio Code v1.114.0 or higher is required for ContextMatic*
 
 Install it directly in VS Code from the Awesome Copilot Marketplace:
 
