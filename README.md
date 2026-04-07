@@ -74,7 +74,7 @@ Install in Claude Code with these commands:
 ```text
 /plugin install context-matic@apimatic-context-matic
 ```
-If prompted, choosing `Install for all collaborators on this repository (project scope)` is recommended.
+If prompted, choose `Install for you (user scope).`.
 
 3. Reload plugins:
 
