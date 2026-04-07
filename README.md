@@ -25,13 +25,7 @@ Install ContextMatic in your coding agent:
 <details>
 <summary><strong>Cursor</strong></summary>
 
-Install from the [Cursor Directory listing](https://cursor.directory/plugins/contextmatic), or follow these steps:
-
-1. Install the MCP server with this one-click link:
-
-```text
-cursor://anysphere.cursor-deeplink/mcp/install?name=context-matic&config=eyJ1cmwiOiJodHRwczovL2NoYXRib3RhcGkuYXBpbWF0aWMuaW8vbWNwL3BsdWdpbnMiLCJoZWFkZXJzIjp7IlgtQXBpbWF0aWMtTWNwLUNsaWVudCI6IkN1cnNvciJ9fQ==
-```
+1. Install the MCP server with [this one-click link](cursor://anysphere.cursor-deeplink/mcp/install?name=context-matic&config=eyJ1cmwiOiJodHRwczovL2NoYXRib3RhcGkuYXBpbWF0aWMuaW8vbWNwL3BsdWdpbnMiLCJoZWFkZXJzIjp7IlgtQXBpbWF0aWMtTWNwLUNsaWVudCI6IkN1cnNvciJ9fQ==).
 
 This Cursor deeplink embeds the Cursor-specific MCP configuration directly and adds the MCP server only. 
 
