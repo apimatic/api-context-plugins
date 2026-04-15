@@ -501,7 +501,7 @@ Code quality scores improved from an average of **~3.0 to ~4.8** across architec
 
 ![API integration using ContextMatic](assets/images/image.png)
 
-APIMatic takes your OpenAPI specification through the same SDK generation pipeline it uses to produce idiomatic, type-safe SDKs in 10+ languages. The resulting MCP server exposes the SDK documentation and integration patterns as structured tool responses that AI assistants can consume natively.
+APIMatic takes your OpenAPI specification through the same SDK generation pipeline it uses to produce idiomatic, type-safe SDKs in 7+ languages. The resulting MCP server exposes the SDK documentation and integration patterns as structured tool responses that AI assistants can consume natively.
 
 This means the context the AI receives is:
 - Derived from actual generated SDK code, not raw documentation
