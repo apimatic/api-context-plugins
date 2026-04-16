@@ -51,8 +51,9 @@ Check whether guidelines and skills have already been added for this project by 
 
 Call **fetch_api** to find available APIs — always start here.
 
-- Provide the `language` parameter using the language detected in step 1a.
-- The response returns available APIs with their names, descriptions, and `key` values.
+- Always provide the `language` parameter using the language detected in step 1a.
+- Always provide the `key` parameter: pass the API name the user mentioned (e.g. `"paypal"`, `"twilio"`).
+- The tool returns only the matching API on an exact match, or all available APIs with their names, descriptions, and `key` values.
 - Identify the API that matches the user's request based on the name and description.
 - Extract the correct `key` for the user's requested API before proceeding. This key will be used for all subsequent tool calls related to that API.
 
@@ -94,7 +95,7 @@ Call **update_activity** (with the appropriate `milestone`) whenever one of thes
 - [ ] Project's primary language detected (step 1a)
 - [ ] `add_guidelines` called if guideline files were missing, otherwise skipped
 - [ ] `add_skills` called if `{language}-conventions` was missing, otherwise skipped
-- [ ] `fetch_api` called with correct `language` for the project
+- [ ] `fetch_api` called with correct `language` and `key` (API name)
 - [ ] Correct `key` identified for the requested API (or user informed if not found)
 - [ ] `update_activity` called only when a milestone is concretely reached in code/infrastructure — never for questions, searches, or tool lookups
 - [ ] `update_activity` called with the appropriate `milestone` at each integration milestone

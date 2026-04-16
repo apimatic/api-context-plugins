@@ -144,7 +144,7 @@ Once installed, the plugin exposes four tools to the agent. Each tool is mapped 
 
 | Tool | Developer task it enables |
 |------|--------------------------|
-| `fetch_api` | Lists all available APIs with their name, key, and description. The agent calls this first to discover which APIs are available for your project's language. |
+| `fetch_api` | Provide an exact api match or lists all available APIs with their name, key, and description. Pass your project's language and an API name as `key` for an exact-match lookup (returns only that API). The full API catalog is returned if no exact match is found. The agent calls this first to discover which APIs are available. |
 | `ask` | Chat with API Copilot for step-by-step integration guidance and general API questions: authentication setup, client initialization, feature behavior, framework-specific patterns (e.g. "How do I initialize the Twilio client in Laravel?"), and idiomatic SDK code samples. |
 | `endpoint_search` | Returns an SDK endpoint method's description, input parameters, and response shape by method name. |
 | `model_search` | Returns an SDK model's full definition and its typed properties by name. Call this before writing code that constructs request bodies or reads response objects. |
@@ -161,7 +161,7 @@ The four tools are designed to chain together in a natural integration workflow.
 
 | Step | Tool called | What it returns |
 |------|-------------|----------------|
-| 1 | `fetch_api` (`language=typescript`) | Discovers Twilio is available; returns its `key` |
+| 1 | `fetch_api` (`language=typescript`, `key="twilio"`) | Exact match found — returns Twilio's entry with its name, key, and description |
 | 2 | `ask` (`key=twilio`, query=_"How do I initialize the Twilio TypeScript client?"_) | Returns exact SDK setup code with auth configuration |
 | 3 | `endpoint_search` (`query=createMessage`) | Returns the method signature, required parameters, and auth requirements for the SMS send endpoint |
 | 4 | `model_search` (`query=CreateMessageRequest`) | Returns the full typed request model with every available field |
