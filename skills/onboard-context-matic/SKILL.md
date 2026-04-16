@@ -41,7 +41,7 @@ Use the following facts as your source, but say it conversationally — do not p
 
 > | Tool | What it does | When to use it | What you get back |
 > |---|---|---|---|
-> | `fetch_api` | Returns an exact match for an API name (`key`) and language or lists all APIs for a given language | "What APIs can I use?" / Starting a new project / "Do you have the PayPal SDK?" | A named list of available APIs with short descriptions (full catalog, or a single match) |
+> | `fetch_api` | Returns an exact match for an API `key`/identifier and language, or lists all APIs for a given language. The `key` is the machine-readable identifier returned by `fetch_api` (for example, `paypal`), not the human-readable display name (for example, "PayPal Server SDK"). | "What APIs can I use?" / Starting a new project / "Do you have the PayPal SDK?" | A named list of available APIs with short descriptions (full catalog), or one exact API match when you provide its identifier/key and language |
 > | `ask` | Answers integration questions with version-accurate guidance and code samples | "How do I authenticate?", "Show me the quickstart", "What's the right way to do X?" | Step-by-step guidance and runnable code samples grounded in the actual SDK version |
 > | `model_search` | Looks up an SDK model/object definition and its typed properties | "What fields does an Order have?", "Is this property required?" | The model's name, description, and a full typed property list (required vs. optional, nested types) |
 > | `endpoint_search` | Looks up an endpoint method, its parameters, response type, and a runnable code sample | "Show me how to call createOrder", "What does getTrack return?" | Method signature, parameter types, response type, and a copy-paste-ready code sample |
