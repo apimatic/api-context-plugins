@@ -77,6 +77,7 @@ Tell the user which language you detected and that you are fetching the availabl
 example: *"I can see this is a TypeScript project. Let me fetch the APIs available for TypeScript."*
 
 Call **`fetch_api`** with `language` = the detected language and `key` = "".
+Call **`fetch_api`** with `language` = the detected language and `key` = "" so the tool returns the full list of available APIs.
 
 Display the results as a formatted list, showing each API's **name** and a one-sentence summary of
 its **description**. Do not truncate or skip any entry.
