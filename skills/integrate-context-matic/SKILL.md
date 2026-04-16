@@ -52,8 +52,9 @@ Check whether guidelines and skills have already been added for this project by 
 Call **fetch_api** to find available APIs — always start here.
 
 - Always provide the `language` parameter using the language detected in step 1a.
-- Always provide the `key` parameter: pass the API name the user mentioned (e.g. `"paypal"`, `"twilio"`).
-- The tool returns only the matching API on an exact match, or all available APIs with their names, descriptions, and `key` values.
+- Always provide the `key` parameter: pass the API name/key from the user's request (e.g. `"paypal"`, `"twilio"`).
+- If the user did not provide an API name/key, ask them which API they want to integrate, then call `fetch_api` with that value.
+- The tool returns only the matching API on an exact match, or the full API catalog (name, description, and `key`) when there is no exact match.
 - Identify the API that matches the user's request based on the name and description.
 - Extract the correct `key` for the user's requested API before proceeding. This key will be used for all subsequent tool calls related to that API.
 
