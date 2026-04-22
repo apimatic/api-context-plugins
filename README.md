@@ -13,7 +13,7 @@
 
 Coding agents hallucinate APIs. APIMatic Context gives them curated, versioned API and SDK docs.
 
-When a developer asks their agent to "integrate the payments API," it normally guesses, pulling from outdated training data or generic patterns that don't match the actual SDK. ContextMatic solves this by giving the agent authoritative, version-aware, SDK-native context at the exact moment it's needed.
+When a developer asks their agent to "integrate the payments API," it normally guesses, pulling from outdated training data or generic patterns that don't match the actual SDK. ContextMatic solves this by giving the agent deterministic, version-aware, SDK-native context at the exact moment it's needed.
 
 ---
 
