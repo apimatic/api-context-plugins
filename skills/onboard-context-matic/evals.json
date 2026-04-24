@@ -213,12 +213,13 @@
           "value": "ask"
         },
         {
-          "id": "ask-uses-key",
-          "description": "ask is called with a key parameter identifying the chosen API",
+          "id": "ask-uses-all-args",
+          "description": "ask is called with all required args: language, key, and query",
           "type": "tool_call_with_args",
           "value": {
             "tool": "ask",
-            "args_has_key": "key"
+            "args": { "language": "typescript", "key": "paypal" },
+            "args_has_key": "query"
           }
         },
         {
@@ -228,15 +229,6 @@
           "value": {
             "tool": "ask",
             "args_contains": "overview"
-          }
-        },
-        {
-          "id": "ask-uses-query",
-          "description": "ask is called with a query parameter",
-          "type": "tool_call_with_args",
-          "value": {
-            "tool": "ask",
-            "args_has_key": "query"
           }
         }
       ]
@@ -265,21 +257,13 @@
           "value": "model_search"
         },
         {
-          "id": "model-search-uses-key",
-          "description": "model_search is called with a key parameter identifying the API",
+          "id": "model-search-uses-all-args",
+          "description": "model_search is called with all required args: language, key, and query",
           "type": "tool_call_with_args",
           "value": {
             "tool": "model_search",
-            "args_has_key": "key"
-          }
-        },
-        {
-          "id": "model-search-uses-language",
-          "description": "model_search is called with the detected language",
-          "type": "tool_call_with_args",
-          "value": {
-            "tool": "model_search",
-            "args": { "language": "typescript" }
+            "args": { "language": "typescript", "key": "paypal" },
+            "args_has_key": "query"
           }
         },
         {
@@ -316,21 +300,13 @@
           "value": "endpoint_search"
         },
         {
-          "id": "endpoint-search-uses-key",
-          "description": "endpoint_search is called with a key parameter identifying the API",
+          "id": "endpoint-search-uses-all-args",
+          "description": "endpoint_search is called with all required args: language, key, and query",
           "type": "tool_call_with_args",
           "value": {
             "tool": "endpoint_search",
-            "args_has_key": "key"
-          }
-        },
-        {
-          "id": "endpoint-search-uses-language",
-          "description": "endpoint_search is called with the detected language",
-          "type": "tool_call_with_args",
-          "value": {
-            "tool": "endpoint_search",
-            "args": { "language": "typescript" }
+            "args": { "language": "typescript", "key": "paypal" },
+            "args_has_key": "query"
           }
         },
         {
@@ -516,12 +492,13 @@
           }
         },
         {
-          "id": "ask-uses-language",
-          "description": "ask is called with language: typescript",
+          "id": "ask-uses-all-args",
+          "description": "ask is called with all required args: language, key, and query",
           "type": "tool_call_with_args",
           "value": {
             "tool": "ask",
-            "args": { "language": "typescript" }
+            "args": { "language": "typescript", "key": "paypal" },
+            "args_has_key": "query"
           }
         },
         {
