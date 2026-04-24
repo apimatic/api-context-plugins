@@ -222,21 +222,21 @@
           }
         },
         {
-          "id": "ask-uses-language",
-          "description": "ask is called with the detected language parameter",
-          "type": "tool_call_with_args",
-          "value": {
-            "tool": "ask",
-            "args": { "language": "typescript" }
-          }
-        },
-        {
           "id": "ask-query-is-overview",
           "description": "ask query asks for a high-level overview of the API",
           "type": "tool_call_with_args",
           "value": {
             "tool": "ask",
             "args_contains": "overview"
+          }
+        },
+        {
+          "id": "ask-uses-query",
+          "description": "ask is called with a query parameter",
+          "type": "tool_call_with_args",
+          "value": {
+            "tool": "ask",
+            "args_has_key": "query"
           }
         }
       ]
